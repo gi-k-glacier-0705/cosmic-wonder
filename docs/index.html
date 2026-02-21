@@ -1,49 +1,306 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cosmic Wonder</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="scripts.js" defer></script>
+    <title>The Philosophical Entertainer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdfbf7; /* Warm, paper-like off-white */
+            color: #2c3e50;
+        }
+        h1, h2, h3, h4, .serif {
+            font-family: 'Lora', serif;
+        }
+        .fade-in {
+            animation: fadeIn 1.5s ease-in;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+    </style>
 </head>
-<body>
-    <nav class="bg-gray-800 p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="text-white font-bold">Cosmic Wonder</div>
-            <ul class="flex space-x-4">
-                <li><a href="#hero" class="text-white">Home</a></li>
-                <li><a href="#about" class="text-white">About</a></li>
-                <li><a href="#library" class="text-white">Library</a></li>
-                <li><a href="#listening-post" class="text-white">Listening Post</a></li>
-            </ul>
+<body class="antialiased selection:bg-teal-100 selection:text-teal-900">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 transition-all duration-300">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <i data-lucide="compass" class="h-6 w-6 text-teal-600"></i>
+                    <span class="serif text-lg font-semibold tracking-wide">The Philosophical Entertainer</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-gray-600 hover:text-teal-600 transition-colors text-sm uppercase tracking-wider">About</a>
+                    <a href="#library" class="text-gray-600 hover:text-teal-600 transition-colors text-sm uppercase tracking-wider">Reflections</a>
+                    <a href="#connect" class="px-5 py-2 rounded-full border border-teal-600 text-teal-600 hover:bg-teal-600 hover:text-white transition-all text-sm uppercase tracking-wider">Invite Me</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-teal-600 focus:outline-none">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="#about" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50 rounded-md">About</a>
+                <a href="#library" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50 rounded-md">Reflections</a>
+                <a href="#connect" class="block px-3 py-3 text-base font-medium text-teal-600 font-bold hover:bg-gray-50 rounded-md">Invite Me</a>
+            </div>
         </div>
     </nav>
-    <section id="hero" class="bg-blue-500 h-64 flex items-center justify-center">
-        <h1 class="text-white text-4xl">Welcome to Cosmic Wonder</h1>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-20 lg:pt-40 lg:pb-24 overflow-hidden">
+        <div class="max-w-3xl mx-auto px-4 text-center fade-in">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-50 text-teal-800 text-sm font-medium mb-8">
+                <i data-lucide="stars" class="w-4 h-4"></i>
+                <span>Grounded Wisdom for a Chaotic World</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-light mb-8 text-gray-900 leading-tight">
+                Humor. Humanity. <br/>
+                <span class="italic font-serif text-teal-700">Cosmic Wonder.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-xl mx-auto font-light leading-relaxed">
+                Exploring the nature of suffering and the science of connection. I don't force answers; I explore questions.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#listening-post" class="inline-flex items-center justify-center px-8 py-4 text-base font-medium rounded-lg text-white bg-gray-900 hover:bg-gray-800 transition-all shadow-md hover:shadow-lg">
+                    What weighs on your mind?
+                </a>
+                <button onclick="generateWisdom()" class="inline-flex items-center justify-center px-8 py-4 text-base font-medium rounded-lg text-gray-900 bg-white border border-gray-200 hover:bg-gray-50 transition-all">
+                    <i data-lucide="shuffle" class="w-4 h-4 mr-2"></i>
+                    Random Insight
+                </button>
+            </div>
+            
+            <!-- Dynamic Wisdom Container -->
+            <div id="wisdom-container" class="mt-8 h-16 flex items-center justify-center px-4">
+                <p class="text-teal-700 italic font-serif text-lg transition-opacity duration-500 opacity-0" id="wisdom-text"></p>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white border-t border-gray-100">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <h2 class="text-3xl font-serif mb-6 text-gray-900">A Philosophical Entertainer</h2>
+                    <div class="space-y-4 text-lg text-gray-600 font-light">
+                        <p>
+                            I stand at the intersection of <strong>Stoicism and Stand-up</strong>, of <strong>Quantum Physics and Compassion</strong>. 
+                        </p>
+                        <p>
+                            Drawing from the counterculture roots of the 2000s and refining it with the maturity of today, I explore why we fight the flow of the river instead of floating with it (Wu Wei).
+                        </p>
+                        <p>
+                            My goal is simple: to illuminate the profound insights of being human with gentleness, humor, and scientific grounding.
+                        </p>
+                    </div>
+                </div>
+                 <!-- Placeholder for User Image -->
+                <div class="order-1 md:order-2 relative aspect-square bg-gray-100 rounded-2xl overflow-hidden shadow-lg">
+                    <img src="/api/placeholder/400/400" alt="Portrait" class="object-cover w-full h-full opacity-90" onerror="this.src='https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=800'"/>
+                </div>
+            </div>
+        </div>
     </section>
-    <section id="about" class="p-8">
-        <h2 class="text-2xl">About Us</h2>
-        <p>We're dedicated to creating cosmic experiences.</p>
+
+    <!-- The Library (Featured Content) -->
+    <section id="library" class="py-20 bg-gray-50">
+        <div class="max-w-3xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-teal-600 font-medium tracking-wider uppercase text-sm">From The Archives</span>
+                <h2 class="text-3xl font-serif mt-2">Featured Reflection</h2>
+            </div>
+
+            <!-- Featured Article -->
+            <article class="bg-white p-8 md:p-12 rounded-xl shadow-sm border border-gray-100">
+                <div class="flex items-center gap-3 mb-6 text-amber-600">
+                    <i data-lucide="microscope" class="w-5 h-5"></i>
+                    <span class="text-sm font-bold uppercase tracking-wide">Neuroscience & Spirit</span>
+                </div>
+                
+                <h3 class="text-2xl md:text-3xl font-serif font-bold mb-6 text-gray-900">Compassion as Biology: Why We Are Wired to Connect</h3>
+                
+                <div class="prose prose-lg text-gray-600 font-light leading-relaxed">
+                    <p class="mb-4">
+                        We often speak of compassion as a high moral virtue, something we must "try" to have. But what if kindness isn't just a spiritual ideal? What if it is our fundamental biological imperative?
+                    </p>
+                    <p class="mb-4">
+                        When we look at the mechanics of the brain—specifically the Vagus nerve and our mirror neuron system—we see that we are physically designed to resonate with others. When I see you suffer, my brain lights up in the same pain centers. This isn't just poetry; it's neuroscience. We are not isolated entities fighting for survival; we are an interconnected web of nervous systems.
+                    </p>
+                    <p class="mb-4">
+                        The "Self" we try so hard to protect is permeable. In Quantum Physics, the boundaries between particles are uncertain at best. In biology, the boundaries between bodies are bridged by empathy. To deny compassion is to deny our own anatomy.
+                    </p>
+                    <p>
+                        So, when we practice kindness, we aren't just being "good people." We are aligning with the truth of our physical reality. We are coming home to our own nature.
+                    </p>
+                </div>
+
+                <div class="mt-8 pt-8 border-t border-gray-100 flex justify-between items-center text-sm text-gray-500">
+                    <span>Reading time: 2 mins</span>
+                    <button class="text-teal-700 hover:text-teal-900 font-medium flex items-center gap-2">
+                        Share this reflection <i data-lucide="share-2" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Teaser for future content -->
+            <div class="mt-12 text-center">
+                <p class="text-gray-500 italic mb-4">More reflections on Stoicism, Wu Wei, and the cosmos coming soon.</p>
+            </div>
+        </div>
     </section>
-    <section id="library" class="p-8 bg-gray-100">
-        <h2 class="text-2xl">Library</h2>
-        <p>Explore our collection of cosmic literature.</p>
+
+    <!-- The Listening Post -->
+    <section id="listening-post" class="py-20 bg-teal-50">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+            <i data-lucide="ear" class="w-10 h-10 text-teal-600 mx-auto mb-6"></i>
+            <h2 class="text-3xl font-serif mb-4 text-gray-900">What weighs on your mind?</h2>
+            <p class="text-lg text-gray-600 mb-8 max-w-xl mx-auto">
+                I do not wish to preach to the choir, but to hear the song of your struggle. 
+                Share a question, a worry, or a thought.
+            </p>
+
+            <!-- CONTACT FORM START -->
+            <!-- IMPORTANT: Replace YOUR_EMAIL_HERE@gmail.com with your real email address below -->
+            <form action="https://formsubmit.co/cosmicwonder@duck.com" method="POST" class="max-w-lg mx-auto text-left bg-white p-6 md:p-8 rounded-2xl shadow-lg">
+                
+                <!-- Anti-Spam Configuration -->
+                <input type="hidden" name="_captcha" value="false">
+                <!-- Honors your request for a subject line -->
+                <input type="hidden" name="_subject" value="New Question for the Philosophical Entertainer">
+                <!-- Honeypot field (bots fill this, humans don't see it) -->
+                <input type="text" name="_honey" style="display:none">
+
+                <div class="mb-4">
+                    <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Your Question or Story</label>
+                    <textarea name="message" rows="4" class="w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3 border resize-none" placeholder="I feel like I'm losing control over..." required></textarea>
+                </div>
+                
+                <div class="flex items-center gap-2 mb-6">
+                    <input type="checkbox" id="anon" name="is_anonymous" value="yes" class="rounded text-teal-600 focus:ring-teal-500">
+                    <label for="anon" class="text-sm text-gray-600">Keep this anonymous</label>
+                </div>
+
+                <button type="submit" class="w-full bg-teal-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-teal-700 transition-colors shadow-md">
+                    Send through the Ether...
+                </button>
+            </form>
+            <!-- CONTACT FORM END -->
+            
+        </div>
     </section>
-    <section id="listening-post" class="p-8">
-        <h2 class="text-2xl">Listening Post</h2>
-        <p>Join us in the conversation.</p>
+
+    <!-- The Invitation -->
+    <section id="connect" class="py-20 bg-white">
+        <div class="max-w-3xl mx-auto px-4">
+            <div class="bg-gray-900 rounded-3xl p-8 text-center text-white relative overflow-hidden shadow-2xl">
+                <!-- Decorative Glows -->
+                <div class="absolute top-0 left-0 w-48 h-48 bg-teal-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -translate-x-1/2 -translate-y-1/2"></div>
+                <div class="absolute bottom-0 right-0 w-48 h-48 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 translate-x-1/2 translate-y-1/2"></div>
+
+                <div class="relative z-10">
+                    <h2 class="text-2xl md:text-4xl font-serif mb-4">An Open Invitation</h2>
+                    <p class="text-gray-300 mb-8 max-w-xl mx-auto font-light">
+                        I wait for the door to open. If you feel your community would benefit from a compassionate, 
+                        humorous, and grounded perspective, please invite me in.
+                    </p>
+                    
+                    <a href="mailto:cosmicwonder@duck.com" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-gray-900 rounded-lg hover:bg-gray-100 transition-colors font-medium">
+                        <i data-lucide="mail" class="w-4 h-4"></i>
+                        Send an Invitation
+                    </a>
+                </div>
+            </div>
+        </div>
     </section>
-    <form action="mailto:cosmicwonder@duck.com" method="post" enctype="text/plain" class="p-8">
-        <h2 class="text-2xl">Contact Us</h2>
-        <input type="text" name="name" placeholder="Your Name" class="border p-2 w-full">
-        <input type="email" name="email" placeholder="Your Email" class="border p-2 w-full">
-        <textarea name="message" placeholder="Your Message" class="border p-2 w-full"></textarea>
-        <button type="submit" class="bg-blue-500 text-white p-2">Send</button>
-    </form>
-    <footer class="bg-gray-800 p-4 text-white">
-        <p>&copy; 2026 Cosmic Wonder. All rights reserved.</p>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t border-gray-200 py-12">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <i data-lucide="compass" class="h-5 w-5 text-teal-600"></i>
+                <span class="serif text-lg font-bold">The Philosophical Entertainer</span>
+            </div>
+            <p class="text-gray-500 text-sm mb-8">
+                Respecting the unknown. Celebrating the absurd.
+            </p>
+            <div class="flex justify-center gap-6 text-gray-400 mb-8">
+                <a href="#" class="hover:text-teal-600 transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-teal-600 transition-colors"><i data-lucide="youtube" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-teal-600 transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+            </div>
+            <div class="text-xs text-gray-400">
+                &copy; 2024. Built with <span class="text-red-400">❤</span> and Stardust.
+            </div>
+        </div>
     </footer>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Wisdom Generator Logic
+        const wisdoms = [
+            "We suffer more in imagination than in reality. — Seneca (remixed)",
+            "Nature does not hurry, yet everything is accomplished. — Lao Tzu",
+            "You are not a drop in the ocean. You are the entire ocean in a drop. — Rumi",
+            "The universe is under no obligation to make sense to you. — Neil deGrasse Tyson",
+            "If you think you are too small to make a difference, try sleeping with a mosquito. — Dalai Lama",
+            "Relax. Nothing is under control. — Adi Da",
+            "Be kind, for everyone you meet is fighting a hard battle. — Plato"
+        ];
+
+        function generateWisdom() {
+            const container = document.getElementById('wisdom-text');
+            container.style.opacity = '0';
+            
+            setTimeout(() => {
+                const randomWisdom = wisdoms[Math.floor(Math.random() * wisdoms.length)];
+                container.textContent = randomWisdom;
+                container.style.opacity = '1';
+            }, 300);
+        }
+
+        // Show Wisdom on Load
+        window.addEventListener('load', () => {
+            setTimeout(generateWisdom, 800);
+        });
+    </script>
 </body>
 </html>
+
