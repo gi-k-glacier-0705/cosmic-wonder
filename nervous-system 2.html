@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nervous System Hacks · The Philosophical Entertainer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdfbf7;
+            color: #2c3e50;
+        }
+        h1, h2, h3, h4, .serif {
+            font-family: 'Lora', serif;
+        }
+
+        /* Card flip */
+        .card-scene { perspective: 1000px; }
+        .card-inner {
+            position: relative;
+            width: 100%;
+            min-height: 540px;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-inner.flipped { transform: rotateY(180deg); }
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            min-height: 540px;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 1.5rem;
+            overflow: hidden;
+        }
+        .card-back { transform: rotateY(180deg); }
+
+        /* Animations */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0) rotate(0); }
+            20% { transform: translateX(-6px) rotate(-4deg); }
+            40% { transform: translateX(6px) rotate(4deg); }
+            60% { transform: translateX(-4px) rotate(-2deg); }
+            80% { transform: translateX(4px) rotate(2deg); }
+        }
+        @keyframes ping-slow {
+            0% { transform: scale(1); opacity: 0.7; }
+            100% { transform: scale(2.2); opacity: 0; }
+        }
+        @keyframes bounce-in {
+            0% { transform: scale(0.5); opacity: 0; }
+            60% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+        @keyframes flow-down {
+            0% { stroke-dashoffset: 12; }
+            100% { stroke-dashoffset: 0; }
+        }
+        @keyframes bubble-expand {
+            0%, 100% { r: 0; opacity: 0.6; }
+            50% { r: 22; opacity: 0.8; }
+        }
+        @keyframes chew {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.7); transform-origin: top; }
+        }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes countdown-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .animate-shake { animation: shake 0.5s ease-in-out infinite; }
+        .animate-ping-slow { animation: ping-slow 2s ease-out infinite; }
+        .animate-ping-slow-delay { animation: ping-slow 2s ease-out 0.8s infinite; }
+        .animate-bounce-in { animation: bounce-in 0.4s ease-out forwards; }
+        .animate-flow { animation: flow-down 1s linear infinite; }
+        .animate-chew { animation: chew 0.8s ease-in-out infinite; }
+        .card-fade { animation: fadeSlide 0.4s ease-out; }
+        .animate-countdown { animation: countdown-pulse 1s ease-in-out infinite; }
+
+        /* Timer ring */
+        .timer-ring { transform: rotate(-90deg); transform-origin: center; }
+        .timer-ring-circle {
+            stroke-dasharray: 226;
+            stroke-dashoffset: 226;
+            transition: stroke-dashoffset 1s linear;
+        }
+
+        /* Nav */
+        nav a { transition: color 0.2s; }
+        nav a:hover { color: #0d9488; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center gap-2 text-gray-800 hover:text-teal-600">
+                    <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 0l4 4m-4-4l-4 4"/>
+                    </svg>
+                    <span class="serif text-lg font-semibold tracking-wide">The Philosophical Entertainer</span>
+                </a>
+                <a href="index.html" class="text-sm uppercase tracking-wider text-gray-500 hover:text-teal-600">← Back</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="pt-32 pb-8 text-center px-4">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-50 text-teal-800 text-sm font-medium mb-6">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            Nervous System First Aid
+        </div>
+        <h1 class="text-4xl md:text-5xl font-serif font-light text-gray-900 mb-4">Silly Hacks for a<br><em class="text-teal-700">Serious Nervous System</em></h1>
+        <p class="text-gray-500 max-w-md mx-auto font-light">Five body-based tools. Scientifically grounded. Slightly absurd. Genuinely effective.</p>
+    </header>
+
+    <!-- Card Deck -->
+    <main class="max-w-md mx-auto px-4 pb-24" id="app">
+
+        <!-- Progress Dots -->
+        <div class="flex justify-center gap-2 mb-6" id="dots"></div>
+
+        <!-- Navigation Row -->
+        <div class="flex justify-between items-center mb-4 px-1">
+            <button onclick="prevCard()" class="flex items-center gap-1 text-sm text-gray-500 hover:text-teal-700 transition-colors font-medium">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                Prev
+            </button>
+            <span class="text-xs uppercase tracking-widest text-gray-400 font-medium" id="counter">1 / 5</span>
+            <button onclick="nextCard()" class="flex items-center gap-1 text-sm text-gray-500 hover:text-teal-700 transition-colors font-medium">
+                Next
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+        </div>
+
+        <!-- The Card -->
+        <div class="card-scene w-full" id="cardScene">
+            <div class="card-inner" id="cardInner">
+
+                <!-- FRONT -->
+                <div class="card-front shadow-xl" id="cardFront">
+                    <div class="h-full flex flex-col p-7" id="cardColor" style="min-height:540px">
+
+                        <!-- Info toggle -->
+                        <div class="flex justify-end mb-2">
+                            <button onclick="flipCard()" class="flex items-center gap-1 text-xs font-bold bg-white/60 hover:bg-white/90 px-3 py-1.5 rounded-full transition-colors" id="whyBtn">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20A10 10 0 0012 2z"/></svg>
+                                WHY IT WORKS
+                            </button>
+                        </div>
+
+                        <!-- Title -->
+                        <div class="text-center mb-4">
+                            <h2 class="text-2xl font-serif font-bold text-gray-900" id="cardTitle"></h2>
+                            <p class="text-sm opacity-70 mt-1 italic" id="cardTagline"></p>
+                        </div>
+
+                        <!-- Icon -->
+                        <div class="flex justify-center mb-4" id="iconArea"></div>
+
+                        <!-- Timer Ring -->
+                        <div class="flex flex-col items-center mb-4">
+                            <div class="relative w-28 h-28">
+                                <svg class="w-28 h-28 timer-ring" viewBox="0 0 80 80">
+                                    <circle cx="40" cy="40" r="36" fill="none" stroke="#e5e7eb" stroke-width="5"/>
+                                    <circle cx="40" cy="40" r="36" fill="none" stroke-width="5" stroke-linecap="round" class="timer-ring-circle" id="timerCircle"/>
+                                </svg>
+                                <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                    <span class="text-2xl font-mono font-bold tabular-nums" id="timerDisplay">00:30</span>
+                                </div>
+                            </div>
+
+                            <!-- Finished state -->
+                            <div id="finishedMsg" class="hidden text-green-600 font-bold text-lg mt-2 animate-bounce-in">Done! 🎉</div>
+                        </div>
+
+                        <!-- Duration Selector (only shown for cards with multiple durations) -->
+                        <div class="flex justify-center gap-2 mb-3" id="durationSelector" style="display:none!important"></div>
+
+                        <!-- Controls -->
+                        <div class="flex justify-center gap-3 mb-5">
+                            <button onclick="toggleTimer()" id="playBtn" class="flex items-center gap-2 px-7 py-3 rounded-full text-white font-bold shadow-lg active:scale-95 transition-transform text-sm">
+                                <svg class="w-5 h-5" id="playIcon" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <span id="playLabel">Start</span>
+                            </button>
+                            <button onclick="resetTimer()" id="resetBtn" class="hidden w-11 h-11 rounded-full bg-white/60 hover:bg-white/90 flex items-center justify-center transition-colors">
+                                <svg class="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                            </button>
+                        </div>
+
+                        <!-- Description -->
+                        <p class="text-sm text-center text-gray-700 font-light leading-relaxed px-2" id="cardDesc"></p>
+                    </div>
+                </div>
+
+                <!-- BACK -->
+                <div class="card-back shadow-xl bg-gray-900 text-white" style="min-height:540px">
+                    <div class="h-full flex flex-col items-center justify-start text-center p-8 pt-12 overflow-y-auto" style="min-height:540px">
+                        <button onclick="flipCard()" class="absolute top-4 right-4 w-9 h-9 bg-gray-700 hover:bg-gray-600 rounded-full flex items-center justify-center transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </button>
+
+                        <div class="w-14 h-14 bg-gray-700 rounded-full flex items-center justify-center mb-6">
+                            <svg class="w-7 h-7 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                        </div>
+
+                        <h3 class="text-xl font-serif font-bold mb-4 text-white">The Science</h3>
+                        <div class="text-gray-300 leading-relaxed text-base text-left" id="cardScience"></div>
+
+                        <button onclick="flipCard()" class="mt-8 text-sm text-gray-500 hover:text-gray-300 underline transition-colors">
+                            Back to Exercise
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const STRATEGIES = [
+            {
+                id: 'shake',
+                title: 'The Wet Dog Shake',
+                tagline: 'Shake it off. Literally.',
+                description: 'Stand up. Shake your hands. Shake your legs. Wiggle your spine. Let your head bobble. Do it for 30 seconds.',
+                science: 'Animals shake to discharge adrenaline after a threat. This "somatic shaking" signals your amygdala that the danger is over, releasing trapped tension from the body.',
+                duration: 30,
+                bg: '#e0f2fe',
+                accent: '#0284c7',
+                btn: '#0369a1',
+                ring: '#0284c7',
+                icon: 'shake'
+            },
+            {
+                id: 'laugh',
+                title: 'The Fake Laugh',
+                tagline: "Fake it 'til you make it.",
+                description: 'Force a loud "HA! HA! HA!". Keep going until it feels so awkward you start laughing for real.',
+                science: "Your body can't distinguish between simulated and real laughter. Both engage the diaphragm and trigger endorphins, lowering cortisol instantly.",
+                duration: 45,
+                bg: '#fef9c3',
+                accent: '#ca8a04',
+                btn: '#a16207',
+                ring: '#ca8a04',
+                icon: 'laugh'
+            },
+            {
+                id: 'voo',
+                title: 'The "Voo" Sound',
+                tagline: 'Be a human foghorn.',
+                description: 'Inhale deeply. Exhale making a low, vibrating "VOOOOOO" sound. Feel it rumble in your belly.',
+                science: 'Low-frequency vibration stimulates the Vagus Nerve, physically flipping your system from "fight or flight" to "rest and digest".',
+                duration: 60,
+                bg: '#f3e8ff',
+                accent: '#9333ea',
+                btn: '#7e22ce',
+                ring: '#9333ea',
+                icon: 'voo'
+            },
+            {
+                id: 'gum',
+                title: 'Isochronal Chewing',
+                tagline: 'Trick your primal brain.',
+                description: 'Try at least 3 minutes now. Pop a piece of gum (or pretend to) and chew rhythmically and intentionally.',
+                science: "Chewing with an even pace (isochronal) for 10-15 minutes can signal safety to your nervous system.\n\nTrigeminal Nerve Activity: chewing stimulates the trigeminal nerve, which has a calming effect on the brainstem and helps lower the body's overall stress response.\n\nProprioceptive Input: The jaw is a powerful muscle, and repetitive, rhythmic movement provides calming proprioceptive input to the brain, which is especially effective for reducing feelings of being overwhelmed.",
+                duration: 180,
+                durations: [180, 600],
+                durationLabels: ['3 min', '10 min'],
+                bg: '#fce7f3',
+                accent: '#db2777',
+                btn: '#be185d',
+                ring: '#db2777',
+                icon: 'gum'
+            },
+            {
+                id: 'wall',
+                title: 'Legs Up The Wall',
+                tagline: 'Get inverted.',
+                description: 'Lie on the floor, butt against the wall, legs straight up. Breathe slowly. Rest here.',
+                science: 'This inversion (Viparita Karani) physically shifts blood flow, slows heart rate, and makes it nearly impossible to maintain a high-panic state.',
+                duration: 120,
+                bg: '#ecfccb',
+                accent: '#65a30d',
+                btn: '#4d7c0f',
+                ring: '#65a30d',
+                icon: 'wall'
+            }
+        ];
+
+        // SVG Icons
+        function renderIcon(type, animating) {
+            const a = animating;
+            switch(type) {
+                case 'shake':
+                    return `<svg viewBox="0 0 100 100" class="w-28 h-28 ${a ? 'animate-shake' : ''}">
+                        <circle cx="50" cy="50" r="45" fill="#e0f2fe"/>
+                        <path d="M35 65 Q 50 80 65 65" stroke="#0284c7" stroke-width="3" fill="none"/>
+                        <circle cx="35" cy="45" r="5" fill="#0284c7"/>
+                        <circle cx="65" cy="45" r="5" fill="#0284c7"/>
+                        <path d="M20 50 Q 10 40 15 30" stroke="#0284c7" stroke-width="3" fill="none"/>
+                        <path d="M80 50 Q 90 40 85 30" stroke="#0284c7" stroke-width="3" fill="none"/>
+                        ${a ? '<circle cx="20" cy="28" r="3" fill="#0ea5e9" opacity="0.7"><animate attributeName="r" values="2;5;2" dur="1s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.7;0;0.7" dur="1s" repeatCount="indefinite"/></circle><circle cx="80" cy="28" r="3" fill="#0ea5e9" opacity="0.7"><animate attributeName="r" values="2;5;2" dur="1s" begin="0.4s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.7;0;0.7" dur="1s" begin="0.4s" repeatCount="indefinite"/></circle>' : ''}
+                    </svg>`;
+                case 'laugh':
+                    return `<svg viewBox="0 0 100 100" class="w-28 h-28">
+                        <circle cx="50" cy="50" r="45" fill="#fef9c3"/>
+                        <path d="M30 60 Q 50 90 70 60" fill="#ca8a04"/>
+                        <path d="M30 40 L 40 45 L 30 50" fill="none" stroke="#ca8a04" stroke-width="3"/>
+                        <path d="M70 40 L 60 45 L 70 50" fill="none" stroke="#ca8a04" stroke-width="3"/>
+                        ${a ? `
+                        <text x="8" y="30" font-size="12" font-weight="bold" fill="#ca8a04"><animate attributeName="y" values="30;25;30" dur="0.6s" repeatCount="indefinite"/>HA!</text>
+                        <text x="68" y="22" font-size="12" font-weight="bold" fill="#ca8a04"><animate attributeName="y" values="22;17;22" dur="0.6s" begin="0.2s" repeatCount="indefinite"/>HA!</text>
+                        <text x="74" y="78" font-size="10" font-weight="bold" fill="#ca8a04"><animate attributeName="y" values="78;73;78" dur="0.6s" begin="0.4s" repeatCount="indefinite"/>ha!</text>
+                        ` : ''}
+                    </svg>`;
+                case 'voo':
+                    return `<svg viewBox="0 0 100 100" class="w-28 h-28">
+                        <circle cx="50" cy="50" r="45" fill="#f3e8ff"/>
+                        <circle cx="50" cy="50" r="10" fill="#9333ea"/>
+                        ${a ? `
+                        <circle cx="50" cy="50" r="10" fill="none" stroke="#a855f7" stroke-width="2" class="animate-ping-slow"/>
+                        <circle cx="50" cy="50" r="10" fill="none" stroke="#a855f7" stroke-width="2" class="animate-ping-slow-delay"/>
+                        <text x="50" y="92" text-anchor="middle" font-size="8" fill="#7e22ce" font-family="monospace">VOOOOOOO</text>
+                        ` : ''}
+                    </svg>`;
+                case 'gum':
+                    return `<svg viewBox="0 0 100 100" class="w-28 h-28">
+                        <circle cx="50" cy="50" r="45" fill="#fce7f3"/>
+                        <circle cx="50" cy="50" r="${a ? '0' : '15'}" fill="#f472b6">
+                            ${a ? '<animate attributeName="r" values="0;22;25;0" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.5;0.8;0.5" dur="2s" repeatCount="indefinite"/>' : ''}
+                        </circle>
+                        <path d="M30 55 Q 50 ${a ? '82' : '78'} 70 55" fill="none" stroke="#db2777" stroke-width="3">
+                            ${a ? '<animate attributeName="d" values="M30 55 Q 50 78 70 55;M30 55 Q 50 90 70 55;M30 55 Q 50 78 70 55" dur="0.8s" repeatCount="indefinite"/>' : ''}
+                        </path>
+                    </svg>`;
+                case 'wall':
+                    return `<svg viewBox="0 0 100 100" class="w-28 h-28">
+                        <rect x="0" y="0" width="100" height="100" fill="#ecfccb" rx="10"/>
+                        <line x1="5" y1="80" x2="95" y2="80" stroke="#65a30d" stroke-width="2"/>
+                        <line x1="80" y1="5" x2="80" y2="80" stroke="#65a30d" stroke-width="2"/>
+                        <path d="M40 80 L 75 80 L 75 30" fill="none" stroke="#365314" stroke-width="4" stroke-linecap="round"/>
+                        <circle cx="35" cy="80" r="5" fill="#365314"/>
+                        ${a ? '<path d="M70 35 L 70 55" stroke="#365314" stroke-width="2" stroke-dasharray="4 2" class="animate-flow"/>' : ''}
+                    </svg>`;
+            }
+        }
+
+        // State
+        let current = 0;
+        let timerActive = false;
+        let timeLeft = STRATEGIES[0].duration;
+        let timerInterval = null;
+        let isFlipped = false;
+        let isFinished = false;
+
+        function renderDots() {
+            const el = document.getElementById('dots');
+            el.innerHTML = STRATEGIES.map((_, i) => 
+                `<button onclick="goTo(${i})" class="w-2 h-2 rounded-full transition-all ${i === current ? 'bg-gray-800 w-4' : 'bg-gray-300'}"></button>`
+            ).join('');
+        }
+
+        function updateTimerRing() {
+            const s = STRATEGIES[current];
+            const circle = document.getElementById('timerCircle');
+            const circumference = 226;
+            const progress = timeLeft / s.duration;
+            circle.style.strokeDashoffset = circumference - (circumference * progress);
+            circle.style.stroke = s.ring;
+        }
+
+        function formatTime(s) {
+            const m = Math.floor(s / 60);
+            const sec = s % 60;
+            return `${m.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`;
+        }
+
+        function renderCard() {
+            const s = STRATEGIES[current];
+            document.getElementById('counter').textContent = `${current + 1} / ${STRATEGIES.length}`;
+            document.getElementById('cardTitle').textContent = s.title;
+            document.getElementById('cardTagline').textContent = s.tagline;
+            document.getElementById('cardDesc').textContent = s.description;
+            // Science: render line breaks as paragraphs
+            document.getElementById('cardScience').innerHTML = s.science.split('\n\n').map(p => `<p class="mb-3">${p}</p>`).join('');
+            document.getElementById('cardColor').style.backgroundColor = s.bg;
+            document.getElementById('timerDisplay').textContent = formatTime(timeLeft);
+            document.getElementById('playBtn').style.backgroundColor = s.btn;
+            document.getElementById('iconArea').innerHTML = renderIcon(s.icon, timerActive);
+            document.getElementById('cardFront').classList.add('card-fade');
+            setTimeout(() => document.getElementById('cardFront').classList.remove('card-fade'), 400);
+
+            // Duration selector
+            const selector = document.getElementById('durationSelector');
+            if (s.durations) {
+                selector.style.removeProperty('display');
+                selector.innerHTML = s.durations.map((d, i) =>
+                    `<button onclick="setDuration(${d})" id="dur-${d}"
+                        class="px-4 py-1.5 rounded-full text-sm font-semibold border-2 transition-all ${timeLeft === d ? 'text-white' : 'bg-white/60 text-gray-700 border-transparent hover:bg-white/90'}"
+                        style="${timeLeft === d ? `background-color:${s.btn};border-color:${s.btn}` : ''}"
+                    >${s.durationLabels[i]}</button>`
+                ).join('');
+            } else {
+                selector.style.display = 'none';
+            }
+
+            updateTimerRing();
+            renderDots();
+        }
+
+        function setDuration(d) {
+            clearInterval(timerInterval);
+            timerActive = false;
+            isFinished = false;
+            timeLeft = d;
+            // Also update the strategy's default duration for reset purposes
+            STRATEGIES[current].duration = d;
+            renderCard();
+            updateTimerUI();
+        }
+
+        function updateTimerUI() {
+            const el = document.getElementById('timerDisplay');
+            el.textContent = formatTime(timeLeft);
+            el.className = timerActive ? 'text-2xl font-mono font-bold tabular-nums animate-countdown' : 'text-2xl font-mono font-bold tabular-nums';
+            updateTimerRing();
+
+            // Play/pause icon
+            const icon = document.getElementById('playIcon');
+            const label = document.getElementById('playLabel');
+            if (timerActive) {
+                icon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+                label.textContent = 'Pause';
+            } else if (isFinished) {
+                icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+                label.textContent = 'Again?';
+            } else {
+                icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+                label.textContent = 'Start';
+            }
+
+            // Reset button visibility
+            const resetBtn = document.getElementById('resetBtn');
+            if (timeLeft !== STRATEGIES[current].duration || isFinished) {
+                resetBtn.classList.remove('hidden');
+                resetBtn.classList.add('flex');
+            } else {
+                resetBtn.classList.add('hidden');
+                resetBtn.classList.remove('flex');
+            }
+
+            // Finished message
+            document.getElementById('finishedMsg').classList.toggle('hidden', !isFinished);
+            document.getElementById('timerDisplay').classList.toggle('hidden', isFinished);
+
+            // Animate icon
+            document.getElementById('iconArea').innerHTML = renderIcon(STRATEGIES[current].icon, timerActive);
+        }
+
+        function toggleTimer() {
+            if (isFinished) {
+                resetTimer();
+                return;
+            }
+            timerActive = !timerActive;
+            if (timerActive) {
+                timerInterval = setInterval(() => {
+                    timeLeft--;
+                    if (timeLeft <= 0) {
+                        timeLeft = 0;
+                        timerActive = false;
+                        isFinished = true;
+                        clearInterval(timerInterval);
+                    }
+                    updateTimerUI();
+                }, 1000);
+            } else {
+                clearInterval(timerInterval);
+            }
+            updateTimerUI();
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            timerActive = false;
+            isFinished = false;
+            timeLeft = STRATEGIES[current].duration;
+            updateTimerUI();
+        }
+
+        function flipCard() {
+            isFlipped = !isFlipped;
+            document.getElementById('cardInner').classList.toggle('flipped', isFlipped);
+        }
+
+        function goTo(idx) {
+            clearInterval(timerInterval);
+            timerActive = false;
+            isFinished = false;
+            current = idx;
+            timeLeft = STRATEGIES[current].duration;
+            isFlipped = false;
+            document.getElementById('cardInner').classList.remove('flipped');
+            renderCard();
+            updateTimerUI();
+        }
+
+        function nextCard() { goTo((current + 1) % STRATEGIES.length); }
+        function prevCard() { goTo((current - 1 + STRATEGIES.length) % STRATEGIES.length); }
+
+        // Swipe support
+        let touchStartX = 0;
+        document.getElementById('cardScene').addEventListener('touchstart', e => touchStartX = e.touches[0].clientX);
+        document.getElementById('cardScene').addEventListener('touchend', e => {
+            const diff = touchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 50) diff > 0 ? nextCard() : prevCard();
+        });
+
+        // Init
+        renderCard();
+        updateTimerUI();
+    </script>
+</body>
+</html>
