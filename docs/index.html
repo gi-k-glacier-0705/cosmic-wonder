@@ -3,58 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laughing Philosophress</title>
-    <style>
-        body { font-family: Arial, sans-serif; background-color: #f4f4f4; }
-        .container { width: 80%; margin: auto; overflow: hidden; }
-        .card { width: 300px; height: 400px; perspective: 1000px; margin: 20px; }
-        .card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; }
-        .card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; }
-        .card-front { background: #fff; display: flex; align-items: center; justify-content: center; }
-        .card-back { background: #2980b9; transform: rotateY(180deg); display: flex; align-items: center; justify-content: center; color: white; }
-        .flip-button { cursor: pointer; padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; }
-        .timer { font-size: 2em; margin: 20px; }
-        nav { display: flex; justify-content: space-around; margin: 20px 0; background: #2980b9; padding: 10px; color: white; }
-        nav a { color: white; text-decoration: none; }
-    </style>
+    <title>Cosmic Wonder</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="scripts.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
-        </nav>
-        <h1>What weighs on your mind?</h1>
-        <div class="timer" id="timer">00:00:00</div>
-        <div class="card" onclick="flipCard()">
-            <div class="card-inner" id="cardInner">
-                <div class="card-front">
-                    <h2>Click to Flip!</h2>
-                </div>
-                <div class="card-back">
-                    <h2>Laughing Philosophress</h2>
-                </div>
-            </div>
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-white font-bold">Cosmic Wonder</div>
+            <ul class="flex space-x-4">
+                <li><a href="#hero" class="text-white">Home</a></li>
+                <li><a href="#about" class="text-white">About</a></li>
+                <li><a href="#library" class="text-white">Library</a></li>
+                <li><a href="#listening-post" class="text-white">Listening Post</a></li>
+            </ul>
         </div>
-    </div>
-    <script>
-        let seconds = 0;
-        setInterval(() => {
-            seconds++;
-            const hours = Math.floor(seconds / 3600);
-            const minutes = Math.floor((seconds % 3600) / 60);
-            const secs = seconds % 60;
-            document.getElementById('timer').innerHTML =
-                String(hours).padStart(2, '0') + ':' +
-                String(minutes).padStart(2, '0') + ':' +
-                String(secs).padStart(2, '0');
-        }, 1000);
-
-        function flipCard() {
-            const card = document.getElementById('cardInner');
-            card.style.transform = card.style.transform === 'rotateY(180deg)' ? 'rotateY(0deg)' : 'rotateY(180deg)';
-        }
-    </script>
+    </nav>
+    <section id="hero" class="bg-blue-500 h-64 flex items-center justify-center">
+        <h1 class="text-white text-4xl">Welcome to Cosmic Wonder</h1>
+    </section>
+    <section id="about" class="p-8">
+        <h2 class="text-2xl">About Us</h2>
+        <p>We're dedicated to creating cosmic experiences.</p>
+    </section>
+    <section id="library" class="p-8 bg-gray-100">
+        <h2 class="text-2xl">Library</h2>
+        <p>Explore our collection of cosmic literature.</p>
+    </section>
+    <section id="listening-post" class="p-8">
+        <h2 class="text-2xl">Listening Post</h2>
+        <p>Join us in the conversation.</p>
+    </section>
+    <form action="mailto:cosmicwonder@duck.com" method="post" enctype="text/plain" class="p-8">
+        <h2 class="text-2xl">Contact Us</h2>
+        <input type="text" name="name" placeholder="Your Name" class="border p-2 w-full">
+        <input type="email" name="email" placeholder="Your Email" class="border p-2 w-full">
+        <textarea name="message" placeholder="Your Message" class="border p-2 w-full"></textarea>
+        <button type="submit" class="bg-blue-500 text-white p-2">Send</button>
+    </form>
+    <footer class="bg-gray-800 p-4 text-white">
+        <p>&copy; 2026 Cosmic Wonder. All rights reserved.</p>
+    </footer>
 </body>
 </html>
