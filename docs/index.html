@@ -190,28 +190,26 @@
             <!-- CONTACT FORM START -->
             <!-- IMPORTANT: Replace YOUR_EMAIL_HERE@gmail.com with your real email address below -->
             <form action="https://formsubmit.co/cosmicwonder@duck.com" method="POST" class="max-w-lg mx-auto text-left bg-white p-6 md:p-8 rounded-2xl shadow-lg">
-                
-                <!-- Anti-Spam Configuration -->
-                <input type="hidden" name="_captcha" value="false">
-                <!-- Honors your request for a subject line -->
-                <input type="hidden" name="_subject" value="New Question for the Philosophical Entertainer">
-                <!-- Honeypot field (bots fill this, humans don't see it) -->
-                <input type="text" name="_honey" style="display:none">
+    
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_subject" value="New Question for the Philosophical Entertainer">
+    <input type="hidden" name="_next" value="https://gi-k-glacier-0705.github.io/cosmic-wonder/">
+    <input type="text" name="_honey" style="display:none">
 
-                <div class="mb-4">
-                    <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Your Question or Story</label>
-                    <textarea name="message" rows="4" class="w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3 border resize-none" placeholder="I feel like I'm losing control over..." required></textarea>
-                </div>
-                
-                <div class="flex items-center gap-2 mb-6">
-                    <input type="checkbox" id="anon" name="is_anonymous" value="yes" class="rounded text-teal-600 focus:ring-teal-500">
-                    <label for="anon" class="text-sm text-gray-600">Keep this anonymous</label>
-                </div>
+    <div class="mb-4">
+        <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Your Name <span class="text-gray-400 font-normal">(optional)</span></label>
+        <input type="text" name="name" id="name" class="w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3 border" placeholder="A fellow traveler...">
+    </div>
 
-                <button type="submit" class="w-full bg-teal-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-teal-700 transition-colors shadow-md">
-                    Send through the Ether...
-                </button>
-            </form>
+    <div class="mb-6">
+        <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Your Question or Story</label>
+        <textarea name="message" id="message" rows="4" class="w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3 border resize-none" placeholder="I feel like I'm losing control over..." required></textarea>
+    </div>
+
+    <button type="submit" class="w-full bg-teal-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-teal-700 transition-colors shadow-md">
+        Send through the Ether...
+    </button>
+</form>
             <!-- CONTACT FORM END -->
             
         </div>
