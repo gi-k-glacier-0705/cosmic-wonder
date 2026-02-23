@@ -3,314 +3,861 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Philosophical Entertainer</title>
+    <title>The Philosophical Entertainer · Humor. Humanity. Cosmic Wonder.</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #fdfbf7; /* Warm, paper-like off-white */
+            background-color: #fdfbf7;
             color: #2c3e50;
         }
         h1, h2, h3, h4, .serif {
             font-family: 'Lora', serif;
         }
-        .fade-in {
-            animation: fadeIn 1.5s ease-in;
+
+        /* ── NAV ── */
+        nav a { transition: color 0.2s; }
+        nav a:hover { color: #0d9488; }
+
+        /* ── BAMBOO ── */
+        .bamboo-wrap {
+            position: absolute;
+            top: 0; bottom: 0;
+            width: 140px;
+            pointer-events: none;
+            overflow: hidden;
+            opacity: 0.18;
         }
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
+        .bamboo-left  { left: 0; }
+        .bamboo-right { right: 0; transform: scaleX(-1); }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-1.6deg); }
+            50%       { transform: rotate( 1.6deg); }
         }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+        @keyframes sway2 {
+            0%, 100% { transform: rotate( 1.2deg); }
+            50%       { transform: rotate(-1.2deg); }
         }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
+        @keyframes sway3 {
+            0%, 100% { transform: rotate(-0.9deg); }
+            50%       { transform: rotate( 0.9deg); }
         }
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 4px;
+        .sway1 { animation: sway  7s ease-in-out infinite; transform-origin: bottom center; }
+        .sway2 { animation: sway2 9s ease-in-out infinite; transform-origin: bottom center; }
+        .sway3 { animation: sway3 6s ease-in-out infinite; transform-origin: bottom center; }
+
+        /* ── ENSO BRUSH STROKE ── */
+        @keyframes draw-enso {
+            from { stroke-dashoffset: 800; }
+            to   { stroke-dashoffset: 0; }
+        }
+        .enso-path {
+            stroke-dasharray: 800;
+            stroke-dashoffset: 800;
+            animation: draw-enso 2.2s cubic-bezier(0.4,0,0.2,1) 0.4s forwards;
+        }
+
+        /* ── RIPPLE ── */
+        @keyframes ripple-out {
+            0%   { r: 0;  opacity: 0.45; }
+            100% { r: 60; opacity: 0; }
+        }
+        .ripple-1 { animation: ripple-out 3.5s ease-out infinite; }
+        .ripple-2 { animation: ripple-out 3.5s ease-out 1.2s infinite; }
+        .ripple-3 { animation: ripple-out 3.5s ease-out 2.4s infinite; }
+
+        /* ── INK BRUSH PORTRAIT FLOAT ── */
+        @keyframes gentle-float {
+            0%, 100% { transform: translateY(0px); }
+            50%       { transform: translateY(-5px); }
+        }
+        .portrait-float { animation: gentle-float 6s ease-in-out infinite; }
+
+        /* ── INK DRIP ── */
+        @keyframes ink-drip {
+            0%   { opacity: 0; transform: translateY(-8px); }
+            20%  { opacity: 1; }
+            100% { opacity: 0; transform: translateY(12px); }
+        }
+        .ink-drip { animation: ink-drip 4s ease-in 1.8s infinite; }
+
+        /* ── FADE UP ── */
+        @keyframes fade-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .fade-up   { animation: fade-up 0.8s ease-out both; }
+        .delay-1   { animation-delay: 0.15s; }
+        .delay-2   { animation-delay: 0.3s; }
+        .delay-3   { animation-delay: 0.45s; }
+
+        /* ── SECTION TRANSITIONS ── */
+        section { position: relative; }
+
+        /* Random insight button */
+        #insightBtn {
+            background: none;
+            border: 1px solid rgba(13,148,136,0.3);
+            color: #0d9488;
+            font-family: 'Lora', serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        #insightBtn:hover { background: rgba(13,148,136,0.06); }
+
+        /* Brush stroke underline for hero */
+        .brush-underline {
+            position: relative;
+            display: inline-block;
+        }
+        .brush-underline::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: -4px;
+            height: 3px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 8'%3E%3Cpath d='M2 5 Q30 1 60 4 Q90 7 120 3 Q150 0 180 4 Q192 5.5 198 4' stroke='%230d9488' stroke-width='3' fill='none' stroke-linecap='round' opacity='0.6'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+        }
+
+        /* Zen divider */
+        .zen-divider {
+            display: flex; align-items: center; gap: 16px;
+            color: rgba(13,148,136,0.25);
+        }
+        .zen-divider::before, .zen-divider::after {
+            content: ''; flex: 1; height: 1px; background: currentColor;
+        }
+
+        /* Quote bar */
+        .quote-bar {
+            border-left: 3px solid rgba(13,148,136,0.35);
+            padding-left: 1.25rem;
+            margin: 1.25rem 0;
+            font-style: italic;
+            color: #4a5568;
         }
     </style>
 </head>
-<body class="antialiased selection:bg-teal-100 selection:text-teal-900">
+<body class="antialiased">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 transition-all duration-300">
+    <!-- ── NAVIGATION ── -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
         <div class="max-w-4xl mx-auto px-4 sm:px-6">
             <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <i data-lucide="compass" class="h-6 w-6 text-teal-600"></i>
+                <a href="#" class="flex items-center gap-2.5 text-gray-800 hover:text-teal-600">
+                    <!-- Lotus mark -->
+                    <svg width="22" height="18" viewBox="0 0 44 36" fill="none">
+                        <path d="M22 30 C22 30 8 22 8 12 C8 6 14 4 18 8 C19 4 20 2 22 2 C24 2 25 4 26 8 C30 4 36 6 36 12 C36 22 22 30 22 30Z" fill="rgba(13,148,136,0.7)"/>
+                        <path d="M22 30 C22 30 4 24 2 14 C0 6 8 2 14 8 C16 4 18 2 22 2" fill="rgba(13,148,136,0.35)"/>
+                        <path d="M22 30 C22 30 40 24 42 14 C44 6 36 2 30 8 C28 4 26 2 22 2" fill="rgba(13,148,136,0.35)"/>
+                    </svg>
                     <span class="serif text-lg font-semibold tracking-wide">The Philosophical Entertainer</span>
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#about" class="text-sm uppercase tracking-widest text-gray-500 hover:text-teal-600">About</a>
+                    <a href="#library" class="text-sm uppercase tracking-widest text-gray-500 hover:text-teal-600">Reflections</a>
+                    <a href="#connect" class="text-sm uppercase tracking-widest text-gray-500 hover:text-teal-600">Invite Me</a>
                 </div>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#about" class="text-gray-600 hover:text-teal-600 transition-colors text-sm uppercase tracking-wider">About</a>
-                    <a href="#library" class="text-gray-600 hover:text-teal-600 transition-colors text-sm uppercase tracking-wider">Reflections</a>
-                    <a href="#connect" class="px-5 py-2 rounded-full border border-teal-600 text-teal-600 hover:bg-teal-600 hover:text-white transition-all text-sm uppercase tracking-wider">Invite Me</a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-teal-600 focus:outline-none">
-                        <i data-lucide="menu" class="h-6 w-6"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
-            <div class="px-4 pt-2 pb-6 space-y-1">
-                <a href="#about" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50 rounded-md">About</a>
-                <a href="#library" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50 rounded-md">Reflections</a>
-                <a href="#connect" class="block px-3 py-3 text-base font-medium text-teal-600 font-bold hover:bg-gray-50 rounded-md">Invite Me</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="relative pt-32 pb-20 lg:pt-40 lg:pb-24 overflow-hidden">
-        <div class="max-w-3xl mx-auto px-4 text-center fade-in">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-50 text-teal-800 text-sm font-medium mb-8">
-                <i data-lucide="stars" class="w-4 h-4"></i>
-                <span>Grounded Wisdom for a Chaotic World</span>
-            </div>
-            <h1 class="text-4xl md:text-6xl font-light mb-8 text-gray-900 leading-tight">
-                Humor. Humanity. <br/>
-                <span class="italic font-serif text-teal-700">Cosmic Wonder.</span>
+    <!-- ── HERO ── -->
+    <header class="relative min-h-screen flex flex-col items-center justify-center text-center px-4 pt-24 pb-16 overflow-hidden bg-[#fdfbf7]">
+
+        <!-- Bamboo Left -->
+        <div class="bamboo-wrap bamboo-left">
+            <svg viewBox="0 0 140 900" preserveAspectRatio="xMidYMax meet" style="width:100%;height:100%;">
+                <!-- stalk 1 -->
+                <g class="sway1">
+                    <rect x="30" y="40" width="16" height="860" rx="5" fill="#5a7a4a"/>
+                    <rect x="28" y="160" width="20" height="9" rx="3" fill="#3d5a2a"/>
+                    <rect x="28" y="310" width="20" height="9" rx="3" fill="#3d5a2a"/>
+                    <rect x="28" y="460" width="20" height="9" rx="3" fill="#3d5a2a"/>
+                    <rect x="28" y="620" width="20" height="9" rx="3" fill="#3d5a2a"/>
+                    <!-- leaves -->
+                    <ellipse cx="30" cy="154" rx="26" ry="8" fill="#6b9060" transform="rotate(-32 30 154)"/>
+                    <ellipse cx="46" cy="138" rx="22" ry="7" fill="#5a7a4a" transform="rotate(22 46 138)"/>
+                    <ellipse cx="30" cy="304" rx="28" ry="8" fill="#6b9060" transform="rotate(-28 30 304)"/>
+                    <ellipse cx="46" cy="290" rx="20" ry="7" fill="#5a7a4a" transform="rotate(18 46 290)"/>
+                    <ellipse cx="30" cy="454" rx="24" ry="7" fill="#6b9060" transform="rotate(-30 30 454)"/>
+                </g>
+                <!-- stalk 2 -->
+                <g class="sway2" style="transform-origin: 90px 900px;">
+                    <rect x="82" y="120" width="13" height="780" rx="4" fill="#4a6a3a"/>
+                    <rect x="80" y="240" width="17" height="7" rx="2" fill="#3d5a2a"/>
+                    <rect x="80" y="390" width="17" height="7" rx="2" fill="#3d5a2a"/>
+                    <rect x="80" y="540" width="17" height="7" rx="2" fill="#3d5a2a"/>
+                    <ellipse cx="82" cy="234" rx="22" ry="6" fill="#6b9060" transform="rotate(-20 82 234)"/>
+                    <ellipse cx="95" cy="220" rx="18" ry="6" fill="#5a7a4a" transform="rotate(24 95 220)"/>
+                    <ellipse cx="82" cy="384" rx="20" ry="6" fill="#6b9060" transform="rotate(-24 82 384)"/>
+                </g>
+                <!-- stalk 3 thin -->
+                <g class="sway3" style="transform-origin: 112px 900px;">
+                    <rect x="108" y="200" width="10" height="700" rx="3" fill="#4a6a3a" opacity="0.7"/>
+                    <rect x="106" y="330" width="14" height="6" rx="2" fill="#3d5a2a" opacity="0.6"/>
+                    <ellipse cx="108" cy="325" rx="16" ry="5" fill="#6b9060" opacity="0.6" transform="rotate(-18 108 325)"/>
+                </g>
+            </svg>
+        </div>
+
+        <!-- Bamboo Right (mirror) -->
+        <div class="bamboo-wrap bamboo-right">
+            <svg viewBox="0 0 140 900" preserveAspectRatio="xMidYMax meet" style="width:100%;height:100%;">
+                <g class="sway2">
+                    <rect x="30" y="40" width="16" height="860" rx="5" fill="#5a7a4a"/>
+                    <rect x="28" y="160" width="20" height="9" rx="3" fill="#3d5a2a"/>
+                    <rect x="28" y="310" width="20" height="9" rx="3" fill="#3d5a2a"/>
+                    <rect x="28" y="460" width="20" height="9" rx="3" fill="#3d5a2a"/>
+                    <rect x="28" y="620" width="20" height="9" rx="3" fill="#3d5a2a"/>
+                    <ellipse cx="46" cy="154" rx="26" ry="8" fill="#6b9060" transform="rotate(32 46 154)"/>
+                    <ellipse cx="30" cy="138" rx="22" ry="7" fill="#5a7a4a" transform="rotate(-22 30 138)"/>
+                    <ellipse cx="46" cy="304" rx="28" ry="8" fill="#6b9060" transform="rotate(28 46 304)"/>
+                    <ellipse cx="30" cy="290" rx="20" ry="7" fill="#5a7a4a" transform="rotate(-18 30 290)"/>
+                </g>
+                <g class="sway1" style="transform-origin: 90px 900px;">
+                    <rect x="82" y="120" width="13" height="780" rx="4" fill="#4a6a3a"/>
+                    <rect x="80" y="240" width="17" height="7" rx="2" fill="#3d5a2a"/>
+                    <rect x="80" y="390" width="17" height="7" rx="2" fill="#3d5a2a"/>
+                    <ellipse cx="95" cy="234" rx="22" ry="6" fill="#6b9060" transform="rotate(20 95 234)"/>
+                    <ellipse cx="82" cy="220" rx="18" ry="6" fill="#5a7a4a" transform="rotate(-24 82 220)"/>
+                </g>
+            </svg>
+        </div>
+
+        <!-- Water ripples (subtle, behind content) -->
+        <div style="position:absolute;bottom:60px;left:50%;transform:translateX(-50%);opacity:0.12;pointer-events:none;">
+            <svg width="300" height="120" viewBox="0 0 300 120">
+                <ellipse cx="150" cy="60" rx="0" ry="0" fill="none" stroke="#0d9488" stroke-width="1.5" class="ripple-1"/>
+                <ellipse cx="150" cy="60" rx="0" ry="0" fill="none" stroke="#0d9488" stroke-width="1" class="ripple-2"/>
+                <ellipse cx="150" cy="60" rx="0" ry="0" fill="none" stroke="#0d9488" stroke-width="1" class="ripple-3"/>
+            </svg>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 max-w-3xl">
+            <p class="text-xs uppercase tracking-[0.25em] text-teal-600 mb-6 fade-up">Grounded Wisdom for a Chaotic World</p>
+
+            <h1 class="serif text-5xl md:text-6xl font-light text-gray-900 mb-3 fade-up delay-1" style="line-height:1.12;">
+                Humor. Humanity.<br>
+                <span class="brush-underline">Cosmic Wonder.</span>
             </h1>
-            <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-xl mx-auto font-light leading-relaxed">
-                Exploring the nature of suffering and the science of connection. I don't force answers; I explore questions.
+
+            <p class="text-gray-500 max-w-md mx-auto font-light mt-6 mb-8 leading-relaxed fade-up delay-2">
+                Exploring the nature of suffering and the science of connection.<br>
+                <em>I don't force answers — I explore questions.</em>
             </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#listening-post" class="inline-flex items-center justify-center px-8 py-4 text-base font-medium rounded-lg text-white bg-gray-900 hover:bg-gray-800 transition-all shadow-md hover:shadow-lg">
+
+            <div class="flex flex-wrap gap-3 justify-center fade-up delay-3">
+                <a href="#listening-post" class="px-7 py-3 bg-teal-600 text-white rounded-full text-sm font-medium hover:bg-teal-700 transition-colors">
                     What weighs on your mind?
                 </a>
-                <button onclick="generateWisdom()" class="inline-flex items-center justify-center px-8 py-4 text-base font-medium rounded-lg text-gray-900 bg-white border border-gray-200 hover:bg-gray-50 transition-all">
-                    <i data-lucide="shuffle" class="w-4 h-4 mr-2"></i>
-                    Random Insight
-                </button>
+                <a href="#library" class="px-7 py-3 border border-gray-200 text-gray-600 rounded-full text-sm font-medium hover:border-teal-300 hover:text-teal-600 transition-colors">
+                    Explore Reflections
+                </a>
             </div>
-            
-            <!-- Dynamic Wisdom Container -->
-            <div id="wisdom-container" class="mt-8 h-16 flex items-center justify-center px-4">
-                <p class="text-teal-700 italic font-serif text-lg transition-opacity duration-500 opacity-0" id="wisdom-text"></p>
-            </div>
+        </div>
+
+        <!-- Scroll cue -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30">
+            <span class="text-[10px] uppercase tracking-[0.2em] text-gray-500">Descend</span>
+            <svg class="w-4 h-4 text-gray-400 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </div>
     </header>
 
-    <!-- About Section -->
-    <section id="about" class="py-16 bg-white border-t border-gray-100">
-        <div class="max-w-4xl mx-auto px-4">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="order-2 md:order-1">
-                    <h2 class="text-3xl font-serif mb-6 text-gray-900">A Philosophical Entertainer</h2>
-                    <div class="space-y-4 text-lg text-gray-600 font-light">
-                        <p>
-                            I stand at the intersection of <strong>Stoicism and Stand-up</strong>, of <strong>Quantum Physics and Compassion</strong>. 
-                        </p>
-                        <p>
-                            Drawing from the counterculture roots of the 2000s and refining it with the maturity of today, I explore why we fight the flow of the river instead of floating with it (Wu Wei).
-                        </p>
-                        <p>
-                            My goal is simple: to illuminate the profound insights of being human with gentleness, humor, and scientific grounding.
-                        </p>
+    <!-- ── RANDOM INSIGHT ── -->
+    <div class="bg-white border-y border-gray-100 py-8 px-4 text-center">
+        <p id="insightText" class="serif text-lg italic text-gray-600 max-w-xl mx-auto mb-2 leading-relaxed transition-opacity duration-300">
+            "The 'Self' we try so hard to protect is permeable."
+        </p>
+        <p id="insightAuthor" class="text-xs uppercase tracking-[0.2em] text-teal-500 mb-4 transition-opacity duration-300">— The Philosophical Entertainer</p>
+        <button id="insightBtn" onclick="showRandomInsight()">✦ Random Insight</button>
+    </div>
+
+    <!-- ── ABOUT ── -->
+    <section id="about" class="py-24 px-4 bg-[#fdfbf7] overflow-hidden relative">
+
+        <!-- Bamboo accent (right side, partial) -->
+        <div style="position:absolute;right:0;top:0;bottom:0;width:80px;opacity:0.1;pointer-events:none;overflow:hidden;">
+            <svg viewBox="0 0 80 700" style="width:100%;height:100%;">
+                <g class="sway1">
+                    <rect x="20" y="0" width="12" height="700" rx="4" fill="#5a7a4a"/>
+                    <rect x="18" y="130" width="16" height="7" rx="2" fill="#3d5a2a"/>
+                    <rect x="18" y="290" width="16" height="7" rx="2" fill="#3d5a2a"/>
+                    <rect x="18" y="450" width="16" height="7" rx="2" fill="#3d5a2a"/>
+                    <ellipse cx="20" cy="126" rx="20" ry="6" fill="#6b9060" transform="rotate(-24 20 126)"/>
+                    <ellipse cx="32" cy="112" rx="16" ry="5" fill="#5a7a4a" transform="rotate(18 32 112)"/>
+                </g>
+            </svg>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+            <p class="text-xs uppercase tracking-[0.25em] text-teal-600 mb-10">A Philosophical Entertainer</p>
+
+            <div class="grid md:grid-cols-2 gap-16 items-start">
+                <div>
+                    <h2 class="serif text-4xl font-light text-gray-900 mb-6 leading-tight">
+                        Standing at the<br><em>intersection</em>
+                    </h2>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        I stand at the intersection of <strong class="text-teal-700">Stoicism and Stand-up</strong>, of <strong class="text-teal-700">Quantum Physics and Compassion</strong>.
+                    </p>
+                    <p class="text-gray-500 leading-relaxed mb-4 font-light">
+                        Drawing from the counterculture roots of the 2000s and refining it with the maturity of today, I explore why we fight the flow of the river instead of floating with it (Wu Wei).
+                    </p>
+                    <p class="text-gray-500 leading-relaxed font-light">
+                        My goal is simple: to illuminate the profound insights of being human with gentleness, humor, and scientific grounding.
+                    </p>
+                </div>
+
+                <!-- Ink-brush portrait with ensō -->
+                <div class="flex flex-col items-center gap-4">
+                    <div class="portrait-float relative" style="width:280px;height:300px;">
+                        <svg viewBox="0 0 280 300" style="width:100%;height:100%;" fill="none">
+                            <defs>
+                                <!-- Paper texture gradient -->
+                                <radialGradient id="paperBg" cx="50%" cy="45%" r="55%">
+                                    <stop offset="0%" stop-color="#fdfbf7"/>
+                                    <stop offset="100%" stop-color="#f5f0e8"/>
+                                </radialGradient>
+                                <!-- Ink wash for hair -->
+                                <radialGradient id="inkWash" cx="50%" cy="30%" r="60%">
+                                    <stop offset="0%" stop-color="#1a1a1a"/>
+                                    <stop offset="100%" stop-color="#3a3a3a"/>
+                                </radialGradient>
+                                <filter id="inkBlur">
+                                    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise"/>
+                                    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G"/>
+                                </filter>
+                            </defs>
+
+                            <!-- Subtle paper bg circle -->
+                            <circle cx="140" cy="155" r="110" fill="url(#paperBg)" opacity="0.4"/>
+
+                            <!-- ── ENSŌ BRUSH CIRCLE ── -->
+                            <!-- Main ensō arc — hand-drawn feel with variable width -->
+                            <path class="enso-path"
+                                d="M140 48 C195 42 238 75 245 125 C252 175 232 222 198 245 C164 268 118 268 88 248 C58 228 42 192 44 158 C46 124 65 90 92 72 C110 60 126 52 138 50"
+                                stroke="#1a1a1a" stroke-width="6" stroke-linecap="round"
+                                fill="none" opacity="0.85"
+                                filter="url(#inkBlur)"/>
+                            <!-- Inner thinner arc for brush texture -->
+                            <path class="enso-path"
+                                d="M140 52 C193 46 234 78 241 127 C248 177 228 222 196 243 C164 264 120 264 91 245 C62 226 47 192 49 159 C51 126 69 93 95 75"
+                                stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"
+                                fill="none" opacity="0.3"
+                                style="animation-delay: 0.6s;"
+                                filter="url(#inkBlur)"/>
+
+                            <!-- Ink drip at top of ensō where brush lifts -->
+                            <circle cx="140" cy="48" r="4" fill="#1a1a1a" opacity="0.8" class="ink-drip"/>
+                            <circle cx="136" cy="52" r="2" fill="#1a1a1a" opacity="0.5" class="ink-drip" style="animation-delay:4.4s;"/>
+
+                            <!-- ── FIGURE: ink wash brush style ── -->
+                            <!-- Loose ink wash robe/shoulders -->
+                            <path d="M90 230 Q80 210 75 185 Q70 160 85 145 Q100 132 120 128 Q140 125 160 128 Q180 132 196 145 Q210 160 205 185 Q200 210 190 230 Z"
+                                fill="#2a2a2a" opacity="0.85" filter="url(#inkBlur)"/>
+                            <!-- Robe collar detail — ink brush lines -->
+                            <path d="M120 128 Q130 140 140 145 Q150 140 160 128" stroke="#1a1a1a" stroke-width="2.5" fill="none" opacity="0.7" stroke-linecap="round"/>
+
+                            <!-- Neck -->
+                            <rect x="130" y="112" width="20" height="22" rx="6" fill="#c8b89a" opacity="0.9"/>
+
+                            <!-- Face — simplified, joyful, no specific features -->
+                            <!-- Face base wash -->
+                            <ellipse cx="140" cy="98" rx="32" ry="36" fill="#d4c4a8" opacity="0.85"/>
+                            <!-- Hair — flowing ink brush strokes, wild and joyful -->
+                            <!-- Main hair mass -->
+                            <path d="M108 80 Q95 55 100 35 Q110 15 130 18 Q140 10 150 18 Q170 15 180 35 Q185 55 172 80"
+                                fill="#1a1a1a" opacity="0.9" filter="url(#inkBlur)"/>
+                            <!-- Flowing hair left — loose brush strokes -->
+                            <path d="M110 85 Q85 75 65 90 Q48 105 52 130 Q40 110 48 85 Q58 55 80 48 Q95 44 110 60"
+                                fill="#1a1a1a" opacity="0.75" filter="url(#inkBlur)"/>
+                            <!-- Hair flowing right -->
+                            <path d="M170 85 Q195 72 215 88 Q232 105 228 132 Q238 110 232 84 Q222 54 200 46 Q185 42 170 58"
+                                fill="#1a1a1a" opacity="0.7" filter="url(#inkBlur)"/>
+                            <!-- Wispy hair strands — ink brush calligraphy style -->
+                            <path d="M68 102 Q55 88 50 70 Q48 55 58 48" stroke="#1a1a1a" stroke-width="1.5" fill="none" opacity="0.4" stroke-linecap="round"/>
+                            <path d="M212 105 Q228 90 232 72 Q235 56 224 46" stroke="#1a1a1a" stroke-width="1.5" fill="none" opacity="0.35" stroke-linecap="round"/>
+                            <path d="M75 118 Q58 115 46 125 Q38 133 42 145" stroke="#1a1a1a" stroke-width="1.2" fill="none" opacity="0.3" stroke-linecap="round"/>
+                            <path d="M72 95 Q60 78 62 60 Q65 45 74 38" stroke="#1a1a1a" stroke-width="1" fill="none" opacity="0.25" stroke-linecap="round"/>
+                            <!-- More wild flyaway strands -->
+                            <path d="M215 95 Q232 78 238 62" stroke="#1a1a1a" stroke-width="1.2" fill="none" opacity="0.28" stroke-linecap="round"/>
+                            <path d="M105 30 Q98 15 105 5" stroke="#1a1a1a" stroke-width="1.5" fill="none" opacity="0.3" stroke-linecap="round"/>
+                            <path d="M160 22 Q168 8 178 2" stroke="#1a1a1a" stroke-width="1.2" fill="none" opacity="0.25" stroke-linecap="round"/>
+
+                            <!-- Eyes — wide open, delighted (ink dots) -->
+                            <ellipse cx="127" cy="97" rx="6" ry="7" fill="#1a1a1a" opacity="0.9"/>
+                            <ellipse cx="153" cy="97" rx="6" ry="7" fill="#1a1a1a" opacity="0.9"/>
+                            <!-- Eye shine -->
+                            <circle cx="129" cy="94" r="2" fill="white" opacity="0.9"/>
+                            <circle cx="155" cy="94" r="2" fill="white" opacity="0.9"/>
+
+                            <!-- Mouth — wide laughing mouth -->
+                            <path d="M122 112 Q131 122 140 124 Q149 122 158 112" stroke="#1a1a1a" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+                            <!-- Teeth suggestion -->
+                            <path d="M124 114 Q140 126 156 114" fill="white" opacity="0.7"/>
+                            <!-- Lower lip -->
+                            <path d="M128 121 Q140 128 152 121" stroke="#1a1a1a" stroke-width="1" fill="none" opacity="0.4" stroke-linecap="round"/>
+
+                            <!-- Cheek flush — ink wash blush -->
+                            <ellipse cx="116" cy="108" rx="10" ry="7" fill="#e8a0a0" opacity="0.25"/>
+                            <ellipse cx="164" cy="108" rx="10" ry="7" fill="#e8a0a0" opacity="0.25"/>
+
+                            <!-- Ink spatter dots — gestural, lively -->
+                            <circle cx="58"  cy="75"  r="1.5" fill="#1a1a1a" opacity="0.3"/>
+                            <circle cx="222" cy="82"  r="1.2" fill="#1a1a1a" opacity="0.28"/>
+                            <circle cx="48"  cy="120" r="1"   fill="#1a1a1a" opacity="0.22"/>
+                            <circle cx="234" cy="115" r="1.3" fill="#1a1a1a" opacity="0.2"/>
+                            <circle cx="100" cy="20"  r="1"   fill="#1a1a1a" opacity="0.25"/>
+                            <circle cx="185" cy="14"  r="1.2" fill="#1a1a1a" opacity="0.2"/>
+                            <circle cx="68"  cy="55"  r="0.8" fill="#1a1a1a" opacity="0.18"/>
+                        </svg>
+                    </div>
+                    <p class="text-xs uppercase tracking-[0.18em] text-gray-400 text-center" style="font-family:'Lora',serif;">
+                        The Laughing Philosophress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── ZEN DIVIDER ── -->
+    <div class="py-6 px-8 bg-white">
+        <div class="zen-divider max-w-2xl mx-auto">
+            <!-- Small ensō icon -->
+            <svg width="28" height="28" viewBox="0 0 60 60" fill="none" opacity="0.5">
+                <path d="M30 6 A24 24 0 1 1 42 10" stroke="#0d9488" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- ── FEATURED REFLECTION ── -->
+    <section id="library" class="py-24 px-4 bg-[#fdfbf7] relative overflow-hidden">
+        <!-- Bamboo left accent -->
+        <div style="position:absolute;left:0;top:0;bottom:0;width:70px;opacity:0.09;pointer-events:none;overflow:hidden;">
+            <svg viewBox="0 0 70 700" style="width:100%;height:100%;">
+                <g class="sway3">
+                    <rect x="18" y="0" width="11" height="700" rx="3" fill="#5a7a4a"/>
+                    <rect x="16" y="150" width="15" height="6" rx="2" fill="#3d5a2a"/>
+                    <rect x="16" y="320" width="15" height="6" rx="2" fill="#3d5a2a"/>
+                    <ellipse cx="18" cy="146" rx="18" ry="5" fill="#6b9060" transform="rotate(-22 18 146)"/>
+                </g>
+            </svg>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+            <p class="text-xs uppercase tracking-[0.25em] text-teal-600 mb-10">From The Archives</p>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Main article -->
+                <div class="md:col-span-2 bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                    <p class="text-xs uppercase tracking-widest text-teal-500 mb-2">Neuroscience & Spirit</p>
+                    <h3 class="serif text-2xl font-semibold text-gray-900 mb-4 leading-tight">
+                        Compassion as Biology: Why We Are Wired to Connect
+                    </h3>
+                    <div class="flex items-center gap-2 text-xs text-gray-400 mb-5">
+                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke-width="2"/><path d="M12 6v6l4 2" stroke-width="2"/></svg>
+                        2 min read
+                    </div>
+                    <div class="text-gray-600 leading-relaxed text-sm space-y-3 font-light">
+                        <p>We often speak of compassion as a high moral virtue, something we must "try" to have. But what if kindness isn't just a spiritual ideal? What if it is our fundamental biological imperative?</p>
+                        <p>When we look at the mechanics of the brain — specifically the Vagus nerve and our mirror neuron system — we see that we are physically designed to resonate with others.</p>
+                        <div class="quote-bar text-sm">
+                            The "Self" we try so hard to protect is permeable. In Quantum Physics, the boundaries between particles are uncertain at best.
+                        </div>
+                        <p>To deny compassion is to deny our own anatomy. When we practice kindness, we align with the truth of our physical reality.</p>
+                    </div>
+                    <div class="mt-6 pt-5 border-t border-gray-100 flex justify-between items-center">
+                        <button class="text-xs uppercase tracking-widest text-teal-600 hover:text-teal-800 transition-colors">Share this reflection</button>
+                        <span class="text-xs text-gray-300 italic">More coming soon…</span>
                     </div>
                 </div>
-                 <!-- Placeholder for User Image -->
-                <div class="order-1 md:order-2 relative aspect-square bg-gray-100 rounded-2xl overflow-hidden shadow-lg">
-                    <img src="/api/placeholder/400/400" alt="Portrait" class="object-cover w-full h-full opacity-90" onerror="this.src='https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=800'"/>
+
+                <!-- Tool card + sidebar -->
+                <div class="flex flex-col gap-4">
+                    <!-- Nervous system tool -->
+                    <a href="nervous-system.html" class="flex flex-col gap-2 bg-teal-600 rounded-2xl p-6 text-white hover:bg-teal-700 transition-colors group">
+                        <div class="flex items-center gap-2 text-teal-200 text-xs uppercase tracking-widest">
+                            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            Interactive Tool
+                        </div>
+                        <h4 class="serif text-lg font-semibold leading-snug">Nervous System First Aid</h4>
+                        <p class="text-teal-100 text-sm font-light">Five body-based hacks. Scientifically grounded. Slightly absurd.</p>
+                        <span class="text-xs text-teal-200 mt-1 group-hover:translate-x-1 transition-transform inline-block">Try one now →</span>
+                    </a>
+
+                    <!-- Cherry blossom wreath card -->
+                    <div class="bg-white rounded-2xl p-4 border border-gray-100 flex flex-col items-center justify-center gap-2 text-center">
+                        <svg viewBox="0 0 220 220" width="180" height="180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Branch circle — ink brush style -->
+                            <!-- Bottom arc -->
+                            <path d="M55 160 Q60 185 80 198 Q110 215 140 198 Q160 185 165 160" stroke="#2a2420" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+                            <!-- Left arc -->
+                            <path d="M55 160 Q38 145 30 120 Q22 95 35 72 Q45 55 62 45" stroke="#2a2420" stroke-width="3" stroke-linecap="round" fill="none"/>
+                            <!-- Right arc -->
+                            <path d="M165 160 Q182 145 190 120 Q198 95 185 72 Q175 55 158 45" stroke="#2a2420" stroke-width="3" stroke-linecap="round" fill="none"/>
+                            <!-- Top arc -->
+                            <path d="M62 45 Q85 28 110 25 Q135 28 158 45" stroke="#2a2420" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+
+                            <!-- Branch texture — smaller offshoots -->
+                            <path d="M80 198 Q75 205 68 210" stroke="#2a2420" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+                            <path d="M140 198 Q145 205 152 210" stroke="#2a2420" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+                            <path d="M30 120 Q22 118 16 112" stroke="#2a2420" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                            <path d="M190 120 Q198 118 204 112" stroke="#2a2420" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                            <path d="M35 72 Q28 65 25 55" stroke="#2a2420" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                            <path d="M185 72 Q192 65 195 55" stroke="#2a2420" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                            <path d="M62 45 Q55 38 50 28" stroke="#2a2420" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                            <path d="M158 45 Q165 38 170 28" stroke="#2a2420" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+
+                            <!-- ── BLOSSOMS ── helper: 5-petal flower macro -->
+                            <!-- Each blossom: 5 rounded petals around a center, soft pink -->
+
+                            <!-- Top center blossoms -->
+                            <g transform="translate(110,22)">
+                                <ellipse cx="0" cy="-7" rx="4.5" ry="7" fill="#f4b8c8" opacity="0.88" transform="rotate(0)"/>
+                                <ellipse cx="0" cy="-7" rx="4.5" ry="7" fill="#f4b8c8" opacity="0.82" transform="rotate(72)"/>
+                                <ellipse cx="0" cy="-7" rx="4.5" ry="7" fill="#f4b8c8" opacity="0.8" transform="rotate(144)"/>
+                                <ellipse cx="0" cy="-7" rx="4.5" ry="7" fill="#f2a8bc" opacity="0.85" transform="rotate(216)"/>
+                                <ellipse cx="0" cy="-7" rx="4.5" ry="7" fill="#f2a8bc" opacity="0.8" transform="rotate(288)"/>
+                                <circle cx="0" cy="0" r="2.5" fill="#f8d0a0"/>
+                                <line x1="0" y1="0" x2="0" y2="-9" stroke="#c07080" stroke-width="0.6" opacity="0.6"/>
+                                <line x1="0" y1="0" x2="7.5" y2="-3" stroke="#c07080" stroke-width="0.6" opacity="0.6"/>
+                                <line x1="0" y1="0" x2="-7.5" y2="-3" stroke="#c07080" stroke-width="0.6" opacity="0.6"/>
+                            </g>
+                            <g transform="translate(90,26) rotate(-15)">
+                                <ellipse cx="0" cy="-6" rx="4" ry="6" fill="#f4b8c8" opacity="0.8" transform="rotate(0)"/>
+                                <ellipse cx="0" cy="-6" rx="4" ry="6" fill="#f4b8c8" opacity="0.75" transform="rotate(72)"/>
+                                <ellipse cx="0" cy="-6" rx="4" ry="6" fill="#f4b8c8" opacity="0.78" transform="rotate(144)"/>
+                                <ellipse cx="0" cy="-6" rx="4" ry="6" fill="#f2a8bc" opacity="0.8" transform="rotate(216)"/>
+                                <ellipse cx="0" cy="-6" rx="4" ry="6" fill="#f2a8bc" opacity="0.75" transform="rotate(288)"/>
+                                <circle cx="0" cy="0" r="2" fill="#f8d0a0"/>
+                            </g>
+                            <g transform="translate(130,26) rotate(15)">
+                                <ellipse cx="0" cy="-6" rx="4" ry="6" fill="#f8c0d0" opacity="0.8" transform="rotate(0)"/>
+                                <ellipse cx="0" cy="-6" rx="4" ry="6" fill="#f8c0d0" opacity="0.75" transform="rotate(72)"/>
+                                <ellipse cx="0" cy="-6" rx="4" ry="6" fill="#f4b0c0" opacity="0.78" transform="rotate(144)"/>
+                                <ellipse cx="0" cy="-6" rx="4" ry="6" fill="#f4b0c0" opacity="0.8" transform="rotate(216)"/>
+                                <ellipse cx="0" cy="-6" rx="4" ry="6" fill="#f8c0d0" opacity="0.75" transform="rotate(288)"/>
+                                <circle cx="0" cy="0" r="2" fill="#f8d0a0"/>
+                            </g>
+
+                            <!-- Top-right blossoms -->
+                            <g transform="translate(155,40)">
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f4b8c8" opacity="0.85" transform="rotate(0)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f4b8c8" opacity="0.8" transform="rotate(72)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f2a8bc" opacity="0.82" transform="rotate(144)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f2a8bc" opacity="0.8" transform="rotate(216)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f4b8c8" opacity="0.78" transform="rotate(288)"/>
+                                <circle cx="0" cy="0" r="2.2" fill="#f8d0a0"/>
+                                <line x1="0" y1="0" x2="0" y2="-8" stroke="#c07080" stroke-width="0.6" opacity="0.55"/>
+                                <line x1="0" y1="0" x2="7" y2="-3" stroke="#c07080" stroke-width="0.6" opacity="0.55"/>
+                            </g>
+                            <g transform="translate(170,28) rotate(20)">
+                                <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#f8c0d0" opacity="0.75" transform="rotate(0)"/>
+                                <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#f8c0d0" opacity="0.7" transform="rotate(72)"/>
+                                <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#f4b0c0" opacity="0.72" transform="rotate(144)"/>
+                                <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#f4b0c0" opacity="0.7" transform="rotate(216)"/>
+                                <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#f8c0d0" opacity="0.72" transform="rotate(288)"/>
+                                <circle cx="0" cy="0" r="1.8" fill="#f8d0a0"/>
+                            </g>
+
+                            <!-- Right blossoms -->
+                            <g transform="translate(192,75)">
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f4b8c8" opacity="0.85" transform="rotate(0)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f4b8c8" opacity="0.8" transform="rotate(72)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f2a8bc" opacity="0.82" transform="rotate(144)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f2a8bc" opacity="0.8" transform="rotate(216)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f4b8c8" opacity="0.78" transform="rotate(288)"/>
+                                <circle cx="0" cy="0" r="2.2" fill="#f8d0a0"/>
+                                <line x1="0" y1="0" x2="0" y2="-8" stroke="#c07080" stroke-width="0.6" opacity="0.5"/>
+                                <line x1="0" y1="0" x2="-7" y2="-3" stroke="#c07080" stroke-width="0.6" opacity="0.5"/>
+                            </g>
+                            <g transform="translate(200,55) rotate(-10)">
+                                <ellipse cx="0" cy="-5" rx="3.5" ry="5" fill="#f8c0d0" opacity="0.72" transform="rotate(0)"/>
+                                <ellipse cx="0" cy="-5" rx="3.5" ry="5" fill="#f8c0d0" opacity="0.68" transform="rotate(72)"/>
+                                <ellipse cx="0" cy="-5" rx="3.5" ry="5" fill="#f4b0c0" opacity="0.7" transform="rotate(144)"/>
+                                <ellipse cx="0" cy="-5" rx="3.5" ry="5" fill="#f4b0c0" opacity="0.68" transform="rotate(216)"/>
+                                <ellipse cx="0" cy="-5" rx="3.5" ry="5" fill="#f8c0d0" opacity="0.7" transform="rotate(288)"/>
+                                <circle cx="0" cy="0" r="1.8" fill="#f8d0a0"/>
+                            </g>
+
+                            <!-- Right-bottom blossoms -->
+                            <g transform="translate(188,140)">
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f4b8c8" opacity="0.82" transform="rotate(0)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f4b8c8" opacity="0.78" transform="rotate(72)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f2a8bc" opacity="0.8" transform="rotate(144)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f2a8bc" opacity="0.78" transform="rotate(216)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f4b8c8" opacity="0.76" transform="rotate(288)"/>
+                                <circle cx="0" cy="0" r="2.2" fill="#f8d0a0"/>
+                            </g>
+                            <g transform="translate(200,115) rotate(12)">
+                                <ellipse cx="0" cy="-5" rx="3.5" ry="5" fill="#f8c0d0" opacity="0.72" transform="rotate(0)"/>
+                                <ellipse cx="0" cy="-5" rx="3.5" ry="5" fill="#f4b0c0" opacity="0.7" transform="rotate(72)"/>
+                                <ellipse cx="0" cy="-5" rx="3.5" ry="5" fill="#f4b0c0" opacity="0.68" transform="rotate(144)"/>
+                                <ellipse cx="0" cy="-5" rx="3.5" ry="5" fill="#f8c0d0" opacity="0.7" transform="rotate(216)"/>
+                                <ellipse cx="0" cy="-5" rx="3.5" ry="5" fill="#f8c0d0" opacity="0.7" transform="rotate(288)"/>
+                                <circle cx="0" cy="0" r="1.8" fill="#f8d0a0"/>
+                            </g>
+
+                            <!-- Bottom blossoms -->
+                            <g transform="translate(110,210)">
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f4b8c8" opacity="0.85" transform="rotate(0)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f4b8c8" opacity="0.8" transform="rotate(72)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f2a8bc" opacity="0.82" transform="rotate(144)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f2a8bc" opacity="0.8" transform="rotate(216)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f4b8c8" opacity="0.78" transform="rotate(288)"/>
+                                <circle cx="0" cy="0" r="2.2" fill="#f8d0a0"/>
+                                <line x1="0" y1="0" x2="0" y2="-8.5" stroke="#c07080" stroke-width="0.6" opacity="0.55"/>
+                                <line x1="0" y1="0" x2="7" y2="-3" stroke="#c07080" stroke-width="0.6" opacity="0.55"/>
+                                <line x1="0" y1="0" x2="-7" y2="-3" stroke="#c07080" stroke-width="0.6" opacity="0.55"/>
+                            </g>
+                            <g transform="translate(85,208) rotate(10)">
+                                <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#f8c0d0" opacity="0.75" transform="rotate(0)"/>
+                                <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#f4b0c0" opacity="0.72" transform="rotate(72)"/>
+                                <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#f4b0c0" opacity="0.7" transform="rotate(144)"/>
+                                <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#f8c0d0" opacity="0.72" transform="rotate(216)"/>
+                                <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#f8c0d0" opacity="0.72" transform="rotate(288)"/>
+                                <circle cx="0" cy="0" r="1.8" fill="#f8d0a0"/>
+                            </g>
+                            <g transform="translate(135,208) rotate(-10)">
+                                <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#f4b8c8" opacity="0.75" transform="rotate(0)"/>
+                                <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#f4b8c8" opacity="0.72" transform="rotate(72)"/>
+                                <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#f2a8bc" opacity="0.7" transform="rotate(144)"/>
+                                <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#f2a8bc" opacity="0.72" transform="rotate(216)"/>
+                                <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#f4b8c8" opacity="0.72" transform="rotate(288)"/>
+                                <circle cx="0" cy="0" r="1.8" fill="#f8d0a0"/>
+                            </g>
+
+                            <!-- Left-bottom blossoms -->
+                            <g transform="translate(32,140)">
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f4b8c8" opacity="0.82" transform="rotate(0)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f4b8c8" opacity="0.78" transform="rotate(72)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f2a8bc" opacity="0.8" transform="rotate(144)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f2a8bc" opacity="0.78" transform="rotate(216)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f4b8c8" opacity="0.76" transform="rotate(288)"/>
+                                <circle cx="0" cy="0" r="2.2" fill="#f8d0a0"/>
+                                <line x1="0" y1="0" x2="0" y2="-8.5" stroke="#c07080" stroke-width="0.6" opacity="0.5"/>
+                            </g>
+                            <g transform="translate(20,115) rotate(-12)">
+                                <ellipse cx="0" cy="-5" rx="3.5" ry="5" fill="#f8c0d0" opacity="0.72" transform="rotate(0)"/>
+                                <ellipse cx="0" cy="-5" rx="3.5" ry="5" fill="#f4b0c0" opacity="0.7" transform="rotate(72)"/>
+                                <ellipse cx="0" cy="-5" rx="3.5" ry="5" fill="#f4b0c0" opacity="0.68" transform="rotate(144)"/>
+                                <ellipse cx="0" cy="-5" rx="3.5" ry="5" fill="#f8c0d0" opacity="0.7" transform="rotate(216)"/>
+                                <ellipse cx="0" cy="-5" rx="3.5" ry="5" fill="#f8c0d0" opacity="0.7" transform="rotate(288)"/>
+                                <circle cx="0" cy="0" r="1.8" fill="#f8d0a0"/>
+                            </g>
+
+                            <!-- Left blossoms -->
+                            <g transform="translate(28,75)">
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f4b8c8" opacity="0.85" transform="rotate(0)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f4b8c8" opacity="0.8" transform="rotate(72)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f2a8bc" opacity="0.82" transform="rotate(144)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f2a8bc" opacity="0.8" transform="rotate(216)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f4b8c8" opacity="0.78" transform="rotate(288)"/>
+                                <circle cx="0" cy="0" r="2.2" fill="#f8d0a0"/>
+                                <line x1="0" y1="0" x2="0" y2="-8.5" stroke="#c07080" stroke-width="0.6" opacity="0.5"/>
+                                <line x1="0" y1="0" x2="7" y2="-3" stroke="#c07080" stroke-width="0.6" opacity="0.5"/>
+                            </g>
+                            <g transform="translate(20,55) rotate(10)">
+                                <ellipse cx="0" cy="-5" rx="3.5" ry="5" fill="#f8c0d0" opacity="0.72" transform="rotate(0)"/>
+                                <ellipse cx="0" cy="-5" rx="3.5" ry="5" fill="#f4b0c0" opacity="0.7" transform="rotate(72)"/>
+                                <ellipse cx="0" cy="-5" rx="3.5" ry="5" fill="#f4b0c0" opacity="0.68" transform="rotate(144)"/>
+                                <ellipse cx="0" cy="-5" rx="3.5" ry="5" fill="#f8c0d0" opacity="0.7" transform="rotate(216)"/>
+                                <ellipse cx="0" cy="-5" rx="3.5" ry="5" fill="#f8c0d0" opacity="0.7" transform="rotate(288)"/>
+                                <circle cx="0" cy="0" r="1.8" fill="#f8d0a0"/>
+                            </g>
+
+                            <!-- Top-left blossoms -->
+                            <g transform="translate(65,40)">
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f4b8c8" opacity="0.85" transform="rotate(0)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f4b8c8" opacity="0.8" transform="rotate(72)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f2a8bc" opacity="0.82" transform="rotate(144)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f2a8bc" opacity="0.8" transform="rotate(216)"/>
+                                <ellipse cx="0" cy="-6.5" rx="4" ry="6.5" fill="#f4b8c8" opacity="0.78" transform="rotate(288)"/>
+                                <circle cx="0" cy="0" r="2.2" fill="#f8d0a0"/>
+                                <line x1="0" y1="0" x2="0" y2="-8.5" stroke="#c07080" stroke-width="0.6" opacity="0.55"/>
+                                <line x1="0" y1="0" x2="-7" y2="-3" stroke="#c07080" stroke-width="0.6" opacity="0.55"/>
+                            </g>
+                            <g transform="translate(50,28) rotate(-20)">
+                                <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#f8c0d0" opacity="0.75" transform="rotate(0)"/>
+                                <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#f4b0c0" opacity="0.72" transform="rotate(72)"/>
+                                <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#f4b0c0" opacity="0.7" transform="rotate(144)"/>
+                                <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#f8c0d0" opacity="0.72" transform="rotate(216)"/>
+                                <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#f8c0d0" opacity="0.72" transform="rotate(288)"/>
+                                <circle cx="0" cy="0" r="1.8" fill="#f8d0a0"/>
+                            </g>
+
+                            <!-- Loose petals falling inside -->
+                            <ellipse cx="95" cy="95" rx="3.5" ry="5.5" fill="#f8c0d0" opacity="0.35" transform="rotate(30 95 95)"/>
+                            <ellipse cx="130" cy="80" rx="3" ry="4.5" fill="#f4b8c8" opacity="0.3" transform="rotate(-20 130 80)"/>
+                            <ellipse cx="145" cy="130" rx="3" ry="4.5" fill="#f2a8bc" opacity="0.28" transform="rotate(45 145 130)"/>
+                        </svg>
+                        <p class="text-xs italic text-gray-400 serif leading-relaxed -mt-1">"More reflections coming soon…"</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- The Library (Featured Content) -->
-    <section id="library" class="py-20 bg-gray-50">
-        <div class="max-w-3xl mx-auto px-4">
-            <div class="text-center mb-12">
-                <span class="text-teal-600 font-medium tracking-wider uppercase text-sm">From The Archives</span>
-                <h2 class="text-3xl font-serif mt-2">Featured Reflection</h2>
-            </div>
+    <!-- ── LISTENING POST ── -->
+    <section id="listening-post" class="py-24 px-4 bg-white relative overflow-hidden">
+        <!-- Subtle bamboo right -->
+        <div style="position:absolute;right:0;top:0;bottom:0;width:80px;opacity:0.08;pointer-events:none;overflow:hidden;">
+            <svg viewBox="0 0 80 700" style="width:100%;height:100%;">
+                <g class="sway2">
+                    <rect x="30" y="0" width="13" height="700" rx="4" fill="#5a7a4a"/>
+                    <rect x="28" y="180" width="17" height="7" rx="2" fill="#3d5a2a"/>
+                    <rect x="28" y="360" width="17" height="7" rx="2" fill="#3d5a2a"/>
+                    <ellipse cx="30" cy="175" rx="20" ry="6" fill="#6b9060" transform="rotate(-20 30 175)"/>
+                    <ellipse cx="43" cy="162" rx="16" ry="5" fill="#5a7a4a" transform="rotate(18 43 162)"/>
+                </g>
+            </svg>
+        </div>
 
-            <!-- Featured Article -->
-            <article class="bg-white p-8 md:p-12 rounded-xl shadow-sm border border-gray-100">
-                <div class="flex items-center gap-3 mb-6 text-amber-600">
-                    <i data-lucide="microscope" class="w-5 h-5"></i>
-                    <span class="text-sm font-bold uppercase tracking-wide">Neuroscience & Spirit</span>
+        <div class="max-w-4xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 items-start">
+                <div>
+                    <p class="text-xs uppercase tracking-[0.25em] text-teal-600 mb-4">The Listening Post</p>
+                    <h2 class="serif text-4xl font-light text-gray-900 mb-4 leading-tight">
+                        What weighs<br><em>on your mind?</em>
+                    </h2>
+                    <p class="text-gray-500 leading-relaxed font-light mb-8">
+                        You are invited to ask a question or share a concern.
+                    </p>
+                    <!-- Ensō + water ripple decoration -->
+                    <div class="relative w-24 h-24 opacity-30">
+                        <svg width="96" height="96" viewBox="0 0 96 96" fill="none">
+                            <path d="M48 10 A38 38 0 1 1 64 16" stroke="#0d9488" stroke-width="4.5" stroke-linecap="round"/>
+                            <circle cx="48" cy="48" r="22" stroke="#0d9488" stroke-width="0.8" opacity="0.5"/>
+                            <circle cx="48" cy="48" r="12" stroke="#0d9488" stroke-width="0.6" opacity="0.3"/>
+                        </svg>
+                    </div>
                 </div>
-                
-                <h3 class="text-2xl md:text-3xl font-serif font-bold mb-6 text-gray-900">Compassion as Biology: Why We Are Wired to Connect</h3>
-                
-                <div class="prose prose-lg text-gray-600 font-light leading-relaxed">
-                    <p class="mb-4">
-                        We often speak of compassion as a high moral virtue, something we must "try" to have. But what if kindness isn't just a spiritual ideal? What if it is our fundamental biological imperative?
-                    </p>
-                    <p class="mb-4">
-                        When we look at the mechanics of the brain—specifically the Vagus nerve and our mirror neuron system—we see that we are physically designed to resonate with others. When I see you suffer, my brain lights up in the same pain centers. This isn't just poetry; it's neuroscience. We are not isolated entities fighting for survival; we are an interconnected web of nervous systems.
-                    </p>
-                    <p class="mb-4">
-                        The "Self" we try so hard to protect is permeable. In Quantum Physics, the boundaries between particles are uncertain at best. In biology, the boundaries between bodies are bridged by empathy. To deny compassion is to deny our own anatomy.
-                    </p>
-                    <p>
-                        So, when we practice kindness, we aren't just being "good people." We are aligning with the truth of our physical reality. We are coming home to our own nature.
-                    </p>
-                </div>
-
-                <div class="mt-8 pt-8 border-t border-gray-100 flex justify-between items-center text-sm text-gray-500">
-                    <span>Reading time: 2 mins</span>
-                    <button class="text-teal-700 hover:text-teal-900 font-medium flex items-center gap-2">
-                        Share this reflection <i data-lucide="share-2" class="w-4 h-4"></i>
+                <div class="flex flex-col gap-4">
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-gray-400 mb-1.5">Your Name (optional)</label>
+                        <input type="text" placeholder="A name, or stay anonymous"
+                            class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-700 bg-[#fdfbf7] focus:outline-none focus:border-teal-400 focus:ring-2 focus:ring-teal-50 transition-all placeholder:text-gray-300">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-gray-400 mb-1.5">Your Question or Story</label>
+                        <textarea rows="5" placeholder="What's on your mind?"
+                            class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-700 bg-[#fdfbf7] focus:outline-none focus:border-teal-400 focus:ring-2 focus:ring-teal-50 transition-all placeholder:text-gray-300 resize-none"></textarea>
+                    </div>
+                    <button class="w-full bg-teal-600 hover:bg-teal-700 text-white py-3.5 rounded-full text-sm font-medium transition-colors tracking-wide">
+                        Send through the Ether…
                     </button>
                 </div>
-            </article>
-
-            <!-- Teaser for future content -->
-            <div class="mt-12 text-center">
-               <!-- Tool Card -->
-<a href="nervous-system.html" class="mt-8 flex items-start gap-5 bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
-    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center">
-        <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-        </svg>
-    </div>
-    <div>
-        <span class="text-xs font-bold uppercase tracking-wide text-pink-600">Interactive Tool</span>
-        <h4 class="font-serif text-lg font-bold text-gray-900 mt-1 group-hover:text-teal-700 transition-colors">Nervous System First Aid</h4>
-        <p class="text-gray-500 text-sm mt-1 font-light">Five body-based hacks. Scientifically grounded. Slightly absurd. Try one now →</p>
-    </div>
-</a> <p class="text-gray-500 italic mb-4">More reflections on Stoicism, Wu Wei, and the cosmos coming soon.</p>
             </div>
         </div>
     </section>
 
-    <!-- The Listening Post -->
-    <section id="listening-post" class="py-20 bg-teal-50">
-        <div class="max-w-3xl mx-auto px-4 text-center">
-            <i data-lucide="ear" class="w-10 h-10 text-teal-600 mx-auto mb-6"></i>
-            <h2 class="text-3xl font-serif mb-4 text-gray-900">What weighs on your mind?</h2>
-            <p class="text-lg text-gray-600 mb-8 max-w-xl mx-auto">
-                I do not wish to preach to the choir, but to hear the song of your struggle. 
-                Share a question, a worry, or a thought.
+    <!-- ── ZEN DIVIDER ── -->
+    <div class="py-6 px-8 bg-[#fdfbf7]">
+        <div class="zen-divider max-w-2xl mx-auto">
+            <svg width="28" height="28" viewBox="0 0 60 60" fill="none" opacity="0.4">
+                <path d="M30 6 A24 24 0 1 1 42 10" stroke="#0d9488" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- ── CONNECT ── -->
+    <section id="connect" class="py-24 px-4 bg-[#fdfbf7] text-center relative overflow-hidden">
+        <!-- Bamboo both sides, subtle -->
+        <div style="position:absolute;left:0;top:0;bottom:0;width:80px;opacity:0.1;pointer-events:none;overflow:hidden;">
+            <svg viewBox="0 0 80 600" style="width:100%;height:100%;">
+                <g class="sway2">
+                    <rect x="20" y="0" width="12" height="600" rx="3" fill="#5a7a4a"/>
+                    <rect x="18" y="140" width="16" height="6" rx="2" fill="#3d5a2a"/>
+                    <rect x="18" y="320" width="16" height="6" rx="2" fill="#3d5a2a"/>
+                    <ellipse cx="20" cy="136" rx="18" ry="5" fill="#6b9060" transform="rotate(-22 20 136)"/>
+                </g>
+            </svg>
+        </div>
+        <div style="position:absolute;right:0;top:0;bottom:0;width:80px;opacity:0.1;pointer-events:none;overflow:hidden;transform:scaleX(-1);">
+            <svg viewBox="0 0 80 600" style="width:100%;height:100%;">
+                <g class="sway1">
+                    <rect x="20" y="0" width="12" height="600" rx="3" fill="#5a7a4a"/>
+                    <rect x="18" y="140" width="16" height="6" rx="2" fill="#3d5a2a"/>
+                    <rect x="18" y="320" width="16" height="6" rx="2" fill="#3d5a2a"/>
+                    <ellipse cx="20" cy="136" rx="18" ry="5" fill="#6b9060" transform="rotate(-22 20 136)"/>
+                </g>
+            </svg>
+        </div>
+
+        <div class="relative z-10 max-w-lg mx-auto">
+            <!-- Large ensō -->
+            <div class="flex justify-center mb-6">
+                <svg width="80" height="80" viewBox="0 0 80 80" fill="none" opacity="0.3">
+                    <path d="M40 8 A32 32 0 1 1 54 13" stroke="#0d9488" stroke-width="5.5" stroke-linecap="round"/>
+                </svg>
+            </div>
+
+            <p class="text-xs uppercase tracking-[0.25em] text-teal-600 mb-4">An Open Invitation</p>
+            <h2 class="serif text-4xl font-light text-gray-900 mb-4 leading-tight">
+                I wait for the<br>door to open.
+            </h2>
+            <p class="text-gray-500 leading-relaxed font-light mb-8 max-w-sm mx-auto">
+                If you feel your community would benefit from a compassionate, humorous, and grounded perspective, please invite me in.
             </p>
-
-            <!-- CONTACT FORM START -->
-            <!-- IMPORTANT: Replace YOUR_EMAIL_HERE@gmail.com with your real email address below -->
-            <form action="https://formsubmit.co/cosmicwonder@duck.com" method="POST" class="max-w-lg mx-auto text-left bg-white p-6 md:p-8 rounded-2xl shadow-lg">
-    
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_subject" value="New Question for the Philosophical Entertainer">
-    <input type="hidden" name="_next" value="https://gi-k-glacier-0705.github.io/cosmic-wonder/">
-    <input type="text" name="_honey" style="display:none">
-
-    <div class="mb-4">
-        <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Your Name <span class="text-gray-400 font-normal">(optional)</span></label>
-        <input type="text" name="name" id="name" class="w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3 border" placeholder="A fellow traveler...">
-    </div>
-
-    <div class="mb-6">
-        <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Your Question or Story</label>
-        <textarea name="message" id="message" rows="4" class="w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3 border resize-none" placeholder="I feel like I'm losing control over..." required></textarea>
-    </div>
-
-    <button type="submit" class="w-full bg-teal-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-teal-700 transition-colors shadow-md">
-        Send through the Ether...
-    </button>
-</form>
-            <!-- CONTACT FORM END -->
-            
+            <a href="mailto:cosmicwonder@duck.com"
+                class="inline-flex items-center gap-2 px-8 py-3.5 bg-teal-600 text-white rounded-full text-sm font-medium hover:bg-teal-700 transition-colors">
+                Send an Invitation
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </a>
         </div>
     </section>
 
-    <!-- The Invitation -->
-    <section id="connect" class="py-20 bg-white">
-        <div class="max-w-3xl mx-auto px-4">
-            <div class="bg-gray-900 rounded-3xl p-8 text-center text-white relative overflow-hidden shadow-2xl">
-                <!-- Decorative Glows -->
-                <div class="absolute top-0 left-0 w-48 h-48 bg-teal-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -translate-x-1/2 -translate-y-1/2"></div>
-                <div class="absolute bottom-0 right-0 w-48 h-48 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 translate-x-1/2 translate-y-1/2"></div>
-
-                <div class="relative z-10">
-                    <h2 class="text-2xl md:text-4xl font-serif mb-4">An Open Invitation</h2>
-                    <p class="text-gray-300 mb-8 max-w-xl mx-auto font-light">
-                        I wait for the door to open. If you feel your community would benefit from a compassionate, 
-                        humorous, and grounded perspective, please invite me in.
-                    </p>
-                    
-                    <a href="mailto:cosmicwonder@duck.com" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-gray-900 rounded-lg hover:bg-gray-100 transition-colors font-medium">
-                        <i data-lucide="mail" class="w-4 h-4"></i>
-                        Send an Invitation
-                    </a>
-                </div>
-            </div>
+    <!-- ── FOOTER ── -->
+    <footer class="bg-white border-t border-gray-100 py-10 px-4 text-center">
+        <div class="zen-divider max-w-xs mx-auto mb-6">
+            <svg width="18" height="15" viewBox="0 0 44 36" fill="none" opacity="0.4">
+                <path d="M22 30 C22 30 8 22 8 12 C8 6 14 4 18 8 C19 4 20 2 22 2 C24 2 25 4 26 8 C30 4 36 6 36 12 C36 22 22 30 22 30Z" fill="#0d9488"/>
+            </svg>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-50 border-t border-gray-200 py-12">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <div class="flex items-center justify-center gap-2 mb-4">
-                <i data-lucide="compass" class="h-5 w-5 text-teal-600"></i>
-                <span class="serif text-lg font-bold">The Philosophical Entertainer</span>
-            </div>
-            <p class="text-gray-500 text-sm mb-8">
-                Respecting the unknown. Celebrating the absurd.
-            </p>
-            <div class="flex justify-center gap-6 text-gray-400 mb-8">
-                <a href="#" class="hover:text-teal-600 transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-                <a href="#" class="hover:text-teal-600 transition-colors"><i data-lucide="youtube" class="w-5 h-5"></i></a>
-                <a href="#" class="hover:text-teal-600 transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-            </div>
-            <div class="text-xs text-gray-400">
-                &copy; 2024. Built with <span class="text-red-400">❤</span> and Stardust.
-            </div>
-        </div>
+        <p class="serif text-gray-700 mb-1">The Philosophical Entertainer</p>
+        <p class="text-sm text-gray-400 font-light">Respecting the unknown. Celebrating the absurd.</p>
+        <p class="text-xs text-gray-300 mt-4">© 2024 · Built with ❤ and Stardust</p>
     </footer>
 
     <script>
-        // Initialize Icons
-        lucide.createIcons();
-
-        // Mobile Menu Toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-
-        // Wisdom Generator Logic
-        const wisdoms = [
-            "We suffer more in imagination than in reality. — Seneca (remixed)",
-            "Nature does not hurry, yet everything is accomplished. — Lao Tzu",
-            "You are not a drop in the ocean. You are the entire ocean in a drop. — Rumi",
-            "The universe is under no obligation to make sense to you. — Neil deGrasse Tyson",
-            "If you think you are too small to make a difference, try sleeping with a mosquito. — Dalai Lama",
-            "Relax. Nothing is under control. — Adi Da",
-            "Be kind, for everyone you meet is fighting a hard battle. — Plato"
+        const insights = [
+            { quote: "The 'Self' we try so hard to protect is permeable.", author: "The Philosophical Entertainer" },
+            { quote: "We are not isolated entities fighting for survival — we are an interconnected web of nervous systems.", author: "The Philosophical Entertainer" },
+            { quote: "The river doesn't fight itself. Neither must you.", author: "The Philosophical Entertainer" },
+            { quote: "Humor is the sound of suffering meeting grace.", author: "The Philosophical Entertainer" },
+            { quote: "Do not seek that the things which happen should happen as you wish; but wish the things which happen to be as they are, and you will have a tranquil flow of life.", author: "Epictetus" },
+            { quote: "You have power over your mind, not outside events. Realize this, and you will find strength.", author: "Marcus Aurelius" },
+            { quote: "Life is a series of natural and spontaneous changes. Don't resist them — that only creates sorrow.", author: "Lao Tzu" },
+            { quote: "The whole moon and the entire sky are reflected in one dewdrop on the grass.", author: "Dogen" },
+            { quote: "To the mind that is still, the whole universe surrenders.", author: "Lao Tzu" },
+            { quote: "The present moment always will have been.", author: "The Philosophical Entertainer" },
+            { quote: "Wu Wei: effortless action. Not passivity — alignment.", author: "The Philosophical Entertainer" },
+            { quote: "You are not broken. You are a nervous system doing its very best.", author: "The Philosophical Entertainer" },
         ];
-
-        function generateWisdom() {
-            const container = document.getElementById('wisdom-text');
-            container.style.opacity = '0';
-            
+        let lastInsight = 0;
+        function showRandomInsight() {
+            let idx;
+            do { idx = Math.floor(Math.random() * insights.length); } while (idx === lastInsight);
+            lastInsight = idx;
+            const textEl   = document.getElementById('insightText');
+            const authorEl = document.getElementById('insightAuthor');
+            textEl.style.opacity   = '0';
+            authorEl.style.opacity = '0';
             setTimeout(() => {
-                const randomWisdom = wisdoms[Math.floor(Math.random() * wisdoms.length)];
-                container.textContent = randomWisdom;
-                container.style.opacity = '1';
-            }, 300);
+                textEl.textContent   = `"${insights[idx].quote}"`;
+                authorEl.textContent = `— ${insights[idx].author}`;
+                textEl.style.opacity   = '1';
+                authorEl.style.opacity = '1';
+            }, 350);
         }
-
-        // Show Wisdom on Load
-        window.addEventListener('load', () => {
-            setTimeout(generateWisdom, 800);
-        });
     </script>
 </body>
 </html>
-
