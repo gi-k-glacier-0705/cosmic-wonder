@@ -442,21 +442,25 @@
                         </svg>
                     </div>
                 </div>
-                <div class="flex flex-col gap-4">
+                <form action="https://formsubmit.co/cosmicwonder@duck.com" method="POST" class="flex flex-col gap-4">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="New Question for the Philosophical Entertainer">
+                    <input type="hidden" name="_next" value="https://gi-k-glacier-0705.github.io/cosmic-wonder/">
+                    <input type="text" name="_honey" style="display:none">
                     <div>
                         <label class="block text-xs uppercase tracking-widest text-gray-400 mb-1.5">Your Name (optional)</label>
-                        <input type="text" placeholder="A name, or stay anonymous"
+                        <input type="text" name="name" placeholder="A name, or stay anonymous"
                             class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-700 bg-[#fdfbf7] focus:outline-none focus:border-teal-400 focus:ring-2 focus:ring-teal-50 transition-all placeholder:text-gray-300">
                     </div>
                     <div>
                         <label class="block text-xs uppercase tracking-widest text-gray-400 mb-1.5">Your Question or Story</label>
-                        <textarea rows="5" placeholder="What's on your mind?"
-                            class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-700 bg-[#fdfbf7] focus:outline-none focus:border-teal-400 focus:ring-2 focus:ring-teal-50 transition-all placeholder:text-gray-300 resize-none"></textarea>
+                        <textarea name="message" rows="5" placeholder="What's on your mind?"
+                            class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-700 bg-[#fdfbf7] focus:outline-none focus:border-teal-400 focus:ring-2 focus:ring-teal-50 transition-all placeholder:text-gray-300 resize-none" required></textarea>
                     </div>
-                    <button class="w-full bg-teal-600 hover:bg-teal-700 text-white py-3.5 rounded-full text-sm font-medium transition-colors tracking-wide">
+                    <button type="submit" class="w-full bg-teal-600 hover:bg-teal-700 text-white py-3.5 rounded-full text-sm font-medium transition-colors tracking-wide">
                         Send through the Ether…
                     </button>
-                </div>
+                </form>
             </div>
         </div>
     </section>
