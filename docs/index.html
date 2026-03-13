@@ -8,8 +8,9 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://gi-k-glacier-0705.github.io/cosmic-wonder/">
     <meta property="og:title" content="The Laughing Philosophress">
-    <meta property="og:description" content="Humor, humanity, and cosmic wonder.">
+    <meta property="og:description" content="Exploring the intersection of humor and humanity through a lens of cosmic wonder. Join The Laughing Philosophress for insightful reflections and a touch of wit.">
     <meta property="og:image" content="https://gi-k-glacier-0705.github.io/cosmic-wonder/social-preview.jpg">
+    <meta name="author" content="[Julia C. Holmes]">
     <title>The Laughing Philosophress · Humor. Humanity. Cosmic Wonder.</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -569,6 +570,33 @@
                 authorEl.style.opacity = '1';
             }, 350);
         }
+    </script>
+    <button 
+      id="backToTop"
+      onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+      class="fixed bottom-8 right-8 bg-[#2c3e50] text-white p-3 rounded-full shadow-lg hover:bg-opacity-80 transition-all duration-300 opacity-0 pointer-events-none focus:outline-none"
+      aria-label="Back to top">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+      </svg>
+    </button>
+    <footer style="text-align: center; padding: 20px; font-family: 'Inter', sans-serif; font-size: 0.8rem;">
+    <p>&copy; 2026 The Laughing Philosophress. All rights reserved.</p>
+    </footer>
+    <script>
+      const backToTopBtn = document.getElementById('backToTop');
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          // Show button
+          backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+          backToTopBtn.classList.add('opacity-100');
+        } else {
+          // Hide button
+          backToTopBtn.classList.remove('opacity-100');
+          backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+        }
+      });
     </script>
 </body>
 </html>
