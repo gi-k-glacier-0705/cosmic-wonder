@@ -160,7 +160,7 @@ document.addEventListener('click', (e) => {
     if (!btn) return;
     
     const text = btn.innerText.toUpperCase();
-    if (text.includes('WHY IT WORKS') || text.includes('BACK TO EXERCISE')) flipCard();
+    if (text.includes('WHY IT WORKS') || text.includes('BACK TO EXERCISE') || btn.id === 'backBtn') flipCard();
     if (text.includes('NEXT')) nextCard();
     if (text.includes('PREV')) prevCard();
     if (btn.id === 'playBtn') toggleTimer();
