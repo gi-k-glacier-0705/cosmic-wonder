@@ -1,3 +1,109 @@
+ const STRATEGIES = [
+            {
+                id: 'shake',
+                title: 'The Wet Dog Shake',
+                tagline: 'Shake it off. Literally.',
+                description: 'Stand up. Shake your hands. Shake your legs. Wiggle your spine. Let your head bobble. Do it for 30 seconds.',
+                science: 'Animals shake to discharge adrenaline after a threat. This "somatic shaking" signals your amygdala that the danger is over, releasing trapped tension from the body.',
+                duration: 30,
+                bg: '#e0f2fe',
+                accent: '#0284c7',
+                btn: '#0369a1',
+                ring: '#0284c7',
+                icon: 'shake'
+            },
+            {
+                id: 'laugh',
+                title: 'The Fake Laugh',
+                tagline: "Fake it 'til you make it.",
+                description: 'Force a loud "HA! HA! HA!". Keep going until it feels so awkward you start laughing for real.',
+                science: "Your body can't distinguish between simulated and real laughter. Both engage the diaphragm and trigger endorphins, lowering cortisol instantly.",
+                duration: 45,
+                bg: '#fef9c3',
+                accent: '#ca8a04',
+                btn: '#a16207',
+                ring: '#ca8a04',
+                icon: 'laugh'
+            },
+            {
+                id: 'voo',
+                title: 'The "Voo" Sound',
+                tagline: 'Be a human foghorn.',
+                description: 'Inhale deeply. Exhale making a low, vibrating "VOOOOOO" sound. Feel it rumble in your belly.',
+                science: 'Low-frequency vibration stimulates the Vagus Nerve, physically flipping your system from "fight or flight" to "rest and digest".',
+                duration: 60,
+                bg: '#f3e8ff',
+                accent: '#9333ea',
+                btn: '#7e22ce',
+                ring: '#9333ea',
+                icon: 'voo'
+            },
+            {
+                id: 'gum',
+                title: 'Isochronal Chewing',
+                tagline: 'Trick your primal brain.',
+                description: 'Try at least 3 minutes now. Pop a piece of gum (or pretend to) and chew rhythmically and intentionally.',
+                science: "Chewing with an even pace (isochronal) for 10-15 minutes can signal safety to your nervous system.\n\nTrigeminal Nerve Activity: chewing stimulates the trigeminal nerve, which has a calming effect on the brainstem and helps lower the body's overall stress response.\n\nProprioceptive Input: The jaw is a powerful muscle, and repetitive, rhythmic movement provides calming proprioceptive input to the brain, which is especially effective for reducing feelings of being overwhelmed.",
+                duration: 180,
+                durations: [180, 600],
+                durationLabels: ['3 min', '10 min'],
+                bg: '#fce7f3',
+                accent: '#db2777',
+                btn: '#be185d',
+                ring: '#db2777',
+                icon: 'gum'
+            },
+            {
+                id: 'wall',
+                title: 'Legs Up The Wall',
+                tagline: 'Get inverted.',
+                description: 'Lie on the floor, butt against the wall, legs straight up. Breathe slowly. Rest here.',
+                science: 'This inversion (Viparita Karani) physically shifts blood flow, slows heart rate, and makes it nearly impossible to maintain a high-panic state.',
+                duration: 120,
+                bg: '#ecfccb',
+                accent: '#65a30d',
+                btn: '#4d7c0f',
+                ring: '#65a30d',
+                icon: 'wall'
+            }
+        ];
+
+        // SVG Icons
+        function renderIcon(type, animating) {
+            const a = animating;
+            switch(type) {
+                case 'shake':
+                    return `<svg viewBox="0 0 100 100" class="w-28 h-28 ${a ? 'animate-shake' : ''}">
+                        <circle cx="50" cy="50" r="45" fill="#e0f2fe"/>
+                        <path d="M35 65 Q 50 80 65 65" stroke="#0284c7" stroke-width="3" fill="none"/>
+                        <circle cx="35" cy="45" r="5" fill="#0284c7"/>
+                        <circle cx="65" cy="45" r="5" fill="#0284c7"/>
+                        <path d="M20 50 Q 10 40 15 30" stroke="#0284c7" stroke-width="3" fill="none"/>
+                        <path d="M80 50 Q 90 40 85 30" stroke="#0284c7" stroke-width="3" fill="none"/>
+                        ${a ? '<circle cx="20" cy="28" r="3" fill="#0ea5e9" opacity="0.7"><animate attributeName="r" values="2;5;2" dur="1s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.7;0;0.7" dur="1s" repeatCount="indefinite"/></circle><circle cx="80" cy="28" r="3" fill="#0ea5e9" opacity="0.7"><animate attributeName="r" values="2;5;2" dur="1s" begin="0.4s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.7;0;0.7" dur="1s" begin="0.4s" repeatCount="indefinite"/></circle>' : ''}
+                    </svg>`;
+                case 'laugh':
+                    return `<svg viewBox="0 0 100 100" class="w-28 h-28">
+                        <circle cx="50" cy="50" r="45" fill="#fef9c3"/>
+                        <path d="M30 60 Q 50 90 70 60" fill="#ca8a04"/>
+                        <path d="M30 40 L 40 45 L 30 50" fill="none" stroke="#ca8a04" stroke-width="3"/>
+                        <path d="M70 40 L 60 45 L 70 50" fill="none" stroke="#ca8a04" stroke-width="3"/>
+                        ${a ? `
+                        <text x="8" y="30" font-size="12" font-weight="bold" fill="#ca8a04"><animate attributeName="y" values="30;25;30" dur="0.6s" repeatCount="indefinite"/>HA!</text>
+                        <text x="68" y="22" font-size="12" font-weight="bold" fill="#ca8a04"><animate attributeName="y" values="22;17;22" dur="0.6s" begin="0.2s" repeatCount="indefinite"/>HA!</text>
+                        <text x="74" y="78" font-size="10" font-weight="bold" fill="#ca8a04"><animate attributeName="y" values="78;73;78" dur="0.6s" begin="0.4s" repeatCount="indefinite"/>ha!</text>
+                        ` : ''}
+                    </svg>`;
+                case 'voo':
+                    return `<svg viewBox="0 0 100 100" class="w-28 h-28">
+                        <circle cx="50" cy="50" r="45" fill="#f3e8ff"/>
+                        <circle cx="50" cy="50" r="10" fill="#9333ea"/>
+                        ${a ? `
+                        <circle cx="50" cy="50" r="10" fill="none" stroke="#a855f7" stroke-width="2" class="animate-ping-slow"/>
+                        <circle cx="50" cy="50" r="10" fill="none" stroke="#a855f7" stroke-width="2" class="animate-ping-slow-delay"/>
+                        <text x="50" y="92" text-anchor="middle" font-size="8" fill="#7e22ce" font-family="monospace">VOOOOOOO</text>
+                        ` : ''}
+                    </svg>`;
                 case 'gum':
                     return `<svg viewBox="0 0 100 100" class="w-28 h-28">
                         <circle cx="50" cy="50" r="45" fill="#fce7f3"/>
@@ -21,108 +127,6 @@
         }
 
         // State
-        let current = 0;
-        let timerActive = false;
-        let timeLeft = STRATEGIES[0].duration;
-        let timerInterval = null;
-        let isFlipped = false;
-        let isFinished = false;
-
-        function renderDots() {
-            const el = document.getElementById('dots');
-            el.innerHTML = STRATEGIES.map((_, i) => 
-                `<button onclick="goTo(${i})" class="w-2 h-2 rounded-full transition-all ${i === current ? 'bg-gray-800 w-4' : 'bg-gray-300'}"></button>`
-            ).join('');
-        }
-
-        function updateTimerRing() {
-            const s = STRATEGIES[current];
-            const circle = document.getElementById('timerCircle');
-            const circumference = 226;
-            const progress = timeLeft / s.duration;
-            circle.style.strokeDashoffset = circumference - (circumference * progress);
-            circle.style.stroke = s.ring;
-        }
-
-        function formatTime(s) {
-            const m = Math.floor(s / 60);
-            const sec = s % 60;
-            return `${m.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`;
-        }
-
-        function renderCard() {
-            const s = STRATEGIES[current];
-            document.getElementById('counter').textContent = `${current + 1} / ${STRATEGIES.length}`;
-            document.getElementById('cardTitle').textContent = s.title;
-            document.getElementById('cardTagline').textContent = s.tagline;
-            document.getElementById('cardDesc').textContent = s.description;
-            // Science: render line breaks as paragraphs
-            document.getElementById('cardScience').innerHTML = s.science.split('\n\n').map(p => `<p class="mb-3">${p}</p>`).join('');
-            document.getElementById('cardColor').style.backgroundColor = s.bg;
-            document.getElementById('timerDisplay').textContent = formatTime(timeLeft);
-            document.getElementById('playBtn').style.backgroundColor = s.btn;
-            document.getElementById('iconArea').innerHTML = renderIcon(s.icon, timerActive);
-            document.getElementById('cardFront').classList.add('card-fade');
-            setTimeout(() => document.getElementById('cardFront').classList.remove('card-fade'), 400);
-
-            // Duration selector
-            const selector = document.getElementById('durationSelector');
-            if (s.durations) {
-                selector.style.removeProperty('display');
-                selector.innerHTML = s.durations.map((d, i) =>
-                    `<button onclick="setDuration(${d})" id="dur-${d}"
-                        class="px-4 py-1.5 rounded-full text-sm font-semibold border-2 transition-all ${timeLeft === d ? 'text-white' : 'bg-white/60 text-gray-700 border-transparent hover:bg-white/90'}"
-                        style="${timeLeft === d ? `background-color:${s.btn};border-color:${s.btn}` : ''}"
-                    >${s.durationLabels[i]}</button>`
-                ).join('');
-            } else {
-                selector.style.display = 'none';
-            }
-
-            updateTimerRing();
-            renderDots();
-        }
-
-        function setDuration(d) {
-            clearInterval(timerInterval);
-            timerActive = false;
-            isFinished = false;
-            timeLeft = d;
-            // Also update the strategy's default duration for reset purposes
-            STRATEGIES[current].duration = d;
-            renderCard();
-            updateTimerUI();
-        }
-
-        function updateTimerUI() {
-            const el = document.getElementById('timerDisplay');
-            el.textContent = formatTime(timeLeft);
-            el.className = timerActive ? 'text-2xl font-mono font-bold tabular-nums animate-countdown' : 'text-2xl font-mono font-bold tabular-nums';
-            updateTimerRing();
-
-            // Play/pause icon
-            const icon = document.getElementById('playIcon');
-            const label = document.getElementById('playLabel');
-            if (timerActive) {
-                icon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
-                label.textContent = 'Pause';
-            } else if (isFinished) {
-                icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
-                label.textContent = 'Again?';
-            } else {
-                icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
-                label.textContent = 'Start';
-            }
-
-            // Reset button visibility
-            const resetBtn = document.getElementById('resetBtn');
-            if (timeLeft !== STRATEGIES[current].duration || isFinished) {
-                resetBtn.classList.remove('hidden');
-                resetBtn.classList.add('flex');
-            } else {
-                resetBtn.classList.add('hidden');
-                resetBtn.classList.remove('flex');
-            }
 
             // Finished message
             document.getElementById('finishedMsg').classList.toggle('hidden', !isFinished);
