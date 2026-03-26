@@ -11,10 +11,25 @@
     <meta property="og:description" content="Exploring the intersection of humor and humanity through a lens of cosmic wonder. Join The Laughing Philosophress for insightful reflections and a touch of wit.">
     <meta property="og:image" content="https://gi-k-glacier-0705.github.io/cosmic-wonder/social-preview-banner.jpg">
     <meta name="author" content="[Julia C. Holmes]">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co; form-action 'self' https://formsubmit.co https://gi-k-glacier-0705.github.io laughingphilosophress.netlify.app;">
-    <script src="wisdom.js" defer></script> 
+
+    <!-- SECURITY: Content Security Policy — updated to remove CDN, add frame-ancestors and base-uri -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co; form-action 'self' https://formsubmit.co https://gi-k-glacier-0705.github.io laughingphilosophress.netlify.app; frame-ancestors 'none'; base-uri 'self';">
+
+    <!-- SECURITY: Additional hardening -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+
+    <script src="wisdom.js" defer></script>
+
     <title>The Laughing Philosophress · Humor. Humanity. Cosmic Wonder.</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind: local copy with SRI hash — replaces cdn.tailwindcss.com -->
+    <script src="tailwind.min.js"
+            integrity="sha384-nVsJ/Z8r6jbBjlbuEVoY8BfnC5r8nXxZ0+hU/yLYR/95i2e/XXIX8sOTA83p61ol"
+            crossorigin="anonymous"
+            defer></script>
+
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
