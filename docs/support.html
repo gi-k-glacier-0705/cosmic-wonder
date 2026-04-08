@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Support The Laughing Philosophress — help keep independent philosophical writing, humor, and healing wisdom alive and free.">
+    <meta property="og:title" content="Support · The Laughing Philosophress">
+    <meta property="og:description" content="Help keep independent philosophical writing, humor, and healing wisdom alive and free.">
+    <meta property="og:url" content="https://gi-k-glacier-0705.github.io/cosmic-wonder/support.html">
+    <meta property="og:image" content="https://gi-k-glacier-0705.github.io/cosmic-wonder/social-preview-banner.jpg">
+    <meta name="author" content="Julia C. Holmes">
+
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://ko-fi.com https://github.com; connect-src 'self'; frame-ancestors 'none'; base-uri 'self';">
+
+    <title>Support · The Laughing Philosophress</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --teal:        #0d9488;
+            --teal-dark:   #0f766e;
+            --teal-deeper: #115e59;
+            --teal-faint:  rgba(13,148,136,0.08);
+            --teal-mist:   rgba(13,148,136,0.18);
+            --cream:       #fdfbf7;
+            --white:       #ffffff;
+            --text:        #2c3e50;
+            --text-mid:    #4a5568;
+            --text-soft:   #6b7280;
+            --text-faint:  #9ca3af;
+            --border:      #e5e7eb;
+            --radius-pill: 9999px;
+            --radius-card: 1rem;
+        }
+
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cream);
+            color: var(--text);
+            min-height: 100dvh;
+            line-height: 1.6;
+        }
+
+        h1,h2,h3,h4,.serif { font-family: 'Lora', serif; }
+        img,svg { display: block; max-width: 100%; }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 50;
+            background: rgba(253,251,247,0.96);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner {
+            max-width: 896px; margin: 0 auto;
+            padding: 0 1.5rem;
+            height: 5rem;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-logo {
+            display: flex; align-items: center; gap: 0.625rem;
+            text-decoration: none; color: var(--text);
+            font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 600;
+            letter-spacing: 0.02em;
+            transition: color 0.2s;
+        }
+        .nav-logo:hover { color: var(--teal); }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a {
+            text-decoration: none;
+            font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+            color: var(--text-soft); transition: color 0.2s;
+        }
+        .nav-links a:hover, .nav-links a[aria-current] { color: var(--teal); }
+        @media (max-width: 600px) { .nav-links { display: none; } }
+
+        /* ── BAMBOO ── */
+        .bamboo-wrap {
+            position: absolute; top: 0; bottom: 0; width: 140px;
+            pointer-events: none; overflow: hidden; opacity: 0.15;
+        }
+        .bamboo-left  { left: 0; }
+        .bamboo-right { right: 0; transform: scaleX(-1); }
+
+        @keyframes sway  { 0%,100%{transform:rotate(-1.6deg)} 50%{transform:rotate(1.6deg)} }
+        @keyframes sway2 { 0%,100%{transform:rotate(1.2deg)}  50%{transform:rotate(-1.2deg)} }
+        @keyframes sway3 { 0%,100%{transform:rotate(-0.9deg)} 50%{transform:rotate(0.9deg)} }
+        .sway1 { animation: sway  7s ease-in-out infinite; transform-origin: bottom center; }
+        .sway2 { animation: sway2 9s ease-in-out infinite; transform-origin: bottom center; }
+        .sway3 { animation: sway3 6s ease-in-out infinite; transform-origin: bottom center; }
+
+        @keyframes fade-up {
+            from { opacity:0; transform:translateY(20px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+        .fade-up  { animation: fade-up 0.8s ease-out both; }
+        .delay-1  { animation-delay: 0.15s; }
+        .delay-2  { animation-delay: 0.3s; }
+        .delay-3  { animation-delay: 0.45s; }
+
+        @keyframes ripple-out {
+            0%   { r:0;  opacity:0.4; }
+            100% { r:55; opacity:0; }
+        }
+        .ripple-1 { animation: ripple-out 3.5s ease-out infinite; }
+        .ripple-2 { animation: ripple-out 3.5s ease-out 1.2s infinite; }
+        .ripple-3 { animation: ripple-out 3.5s ease-out 2.4s infinite; }
+
+        /* ── ZEN DIVIDER ── */
+        .zen-divider {
+            display: flex; align-items: center; gap: 1rem;
+            color: rgba(13,148,136,0.22);
+            margin: 0 auto;
+        }
+        .zen-divider::before,.zen-divider::after {
+            content:''; flex:1; height:1px; background:currentColor;
+        }
+
+        /* ── PAGE SECTIONS ── */
+        section { position: relative; overflow: hidden; }
+
+        .container { max-width: 896px; margin: 0 auto; padding: 0 1.5rem; }
+        .section-pad { padding: 5rem 1.5rem; }
+
+        .eyebrow {
+            font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+            color: var(--teal); margin-bottom: 1rem;
+        }
+
+        /* ── HERO ── */
+        #hero {
+            min-height: 60vh;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            padding: 8rem 1.5rem 5rem;
+            background: var(--cream);
+        }
+        #hero h1 {
+            font-size: clamp(2.4rem, 6vw, 4rem);
+            font-weight: 400; line-height: 1.12;
+            color: var(--text); margin-bottom: 1.25rem;
+        }
+        #hero p {
+            color: var(--text-mid); font-weight: 300;
+            max-width: 38rem; margin: 0 auto 2rem;
+            font-size: 1.05rem; line-height: 1.7;
+        }
+
+        /* Brush underline */
+        .brush-underline { position: relative; display: inline-block; }
+        .brush-underline::after {
+            content:''; position:absolute; left:0; right:0; bottom:-4px; height:3px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 8'%3E%3Cpath d='M2 5 Q30 1 60 4 Q90 7 120 3 Q150 0 180 4 Q192 5.5 198 4' stroke='%230d9488' stroke-width='3' fill='none' stroke-linecap='round' opacity='0.6'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+        }
+
+        /* ── WHY SECTION ── */
+        #why { background: var(--white); padding: 5rem 1.5rem; }
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(260px,100%),1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+        .why-card {
+            background: var(--cream);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-card);
+            padding: 1.75rem;
+        }
+        .why-card .why-icon {
+            width: 40px; height: 40px; margin-bottom: 1rem;
+            color: var(--teal); opacity: 0.7;
+        }
+        .why-card h3 {
+            font-size: 1.05rem; margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+        .why-card p {
+            font-size: 0.9rem; color: var(--text-soft);
+            font-weight: 300; line-height: 1.65;
+        }
+
+        /* ── STORY ── */
+        #story { background: var(--cream); padding: 5rem 1.5rem; }
+        .story-inner {
+            max-width: 640px; margin: 0 auto;
+            font-size: 1rem; color: var(--text-mid); font-weight: 300; line-height: 1.8;
+        }
+        .story-inner p { margin-bottom: 1.25rem; max-width: 72ch; }
+        .story-inner p:last-child { margin-bottom: 0; }
+        .story-inner strong { color: var(--teal-dark); font-weight: 600; }
+        .quote-bar {
+            border-left: 3px solid rgba(13,148,136,0.35);
+            padding-left: 1.25rem; margin: 1.5rem 0;
+            font-style: italic; color: var(--text-mid);
+            font-family: 'Lora', serif;
+        }
+
+        /* ── SUPPORT WAYS ── */
+        #support { background: var(--white); padding: 5rem 1.5rem; }
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(280px,100%),1fr));
+            gap: 1.25rem;
+            margin-top: 2.5rem;
+        }
+        .support-card {
+            border-radius: var(--radius-card);
+            padding: 1.75rem;
+            display: flex; flex-direction: column;
+            border: 1px solid var(--border);
+            background: var(--cream);
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .support-card:hover {
+            box-shadow: 0 8px 24px rgba(13,148,136,0.08);
+            transform: translateY(-2px);
+        }
+        .support-card .card-top {
+            display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;
+        }
+        .support-card .card-icon {
+            width: 36px; height: 36px; flex-shrink: 0;
+        }
+        .support-card h3 { font-size: 1.05rem; color: var(--text); }
+        .support-card p {
+            font-size: 0.875rem; color: var(--text-soft);
+            font-weight: 300; line-height: 1.6; flex: 1; margin-bottom: 1.25rem;
+        }
+        .btn-primary {
+            display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+            padding: 0.7rem 1.5rem;
+            background: var(--teal); color: #fff;
+            border-radius: var(--radius-pill);
+            font-size: 0.8rem; font-weight: 500; letter-spacing: 0.04em;
+            text-decoration: none; border: none; cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-primary:hover { background: var(--teal-dark); }
+        .btn-outline {
+            display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+            padding: 0.7rem 1.5rem;
+            background: transparent;
+            border: 1px solid rgba(13,148,136,0.4);
+            color: var(--teal);
+            border-radius: var(--radius-pill);
+            font-size: 0.8rem; font-weight: 500; letter-spacing: 0.04em;
+            text-decoration: none; cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .btn-outline:hover { background: var(--teal-faint); border-color: var(--teal); }
+
+        /* BMC card — warm cream highlight */
+        .card-bmc { background: #fff8f0; border-color: rgba(255,180,80,0.25); }
+        .card-bmc .btn-bmc {
+            background: #FFDD00; color: #000;
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.7rem 1.5rem; border-radius: var(--radius-pill);
+            font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em;
+            text-decoration: none; border: none; cursor: pointer;
+            transition: background 0.2s;
+        }
+        .card-bmc .btn-bmc:hover { background: #f5d000; }
+
+        /* PayPal card */
+        .card-paypal { background: #f5f9ff; border-color: rgba(0,100,230,0.12); }
+        .card-paypal .btn-paypal {
+            background: #003087; color: #fff;
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.7rem 1.5rem; border-radius: var(--radius-pill);
+            font-size: 0.8rem; font-weight: 600;
+            text-decoration: none; border: none; cursor: pointer;
+            transition: background 0.2s;
+        }
+        .card-paypal .btn-paypal:hover { background: #002070; }
+
+        /* Venmo card */
+        .card-venmo { background: #f0fbff; border-color: rgba(0,163,220,0.15); }
+        .card-venmo .btn-venmo {
+            background: #008CFF; color: #fff;
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.7rem 1.5rem; border-radius: var(--radius-pill);
+            font-size: 0.8rem; font-weight: 600;
+            text-decoration: none; border: none; cursor: pointer;
+            transition: background 0.2s;
+        }
+        .card-venmo .btn-venmo:hover { background: #006fd9; }
+
+        /* GitHub Sponsors card */
+        .card-gh { background: #fdf4ff; border-color: rgba(180,80,220,0.15); }
+        .card-gh .btn-gh {
+            background: #bf3a86; color: #fff;
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.7rem 1.5rem; border-radius: var(--radius-pill);
+            font-size: 0.8rem; font-weight: 600;
+            text-decoration: none; border: none; cursor: pointer;
+            transition: background 0.2s;
+        }
+        .card-gh .btn-gh:hover { background: #a02e70; }
+
+        /* ── RIPPLE AMOUNT CHOOSER ── */
+        #bmc-anchor { padding: 3.5rem 1.5rem; background: var(--cream); text-align: center; }
+        .ripple-amounts {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+        .amt-btn {
+            padding: 0.55rem 1.35rem;
+            border: 1px solid rgba(13,148,136,0.3);
+            border-radius: var(--radius-pill);
+            background: none; cursor: pointer;
+            font-family: 'Lora', serif; font-size: 0.9rem; color: var(--teal);
+            transition: all 0.18s;
+        }
+        .amt-btn:hover, .amt-btn.active {
+            background: var(--teal); color: #fff; border-color: var(--teal);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--white);
+            border-top: 1px solid var(--border);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+        }
+        footer p { font-size: 0.85rem; color: var(--text-soft); font-weight: 300; }
+        footer .serif-name { font-family: 'Lora', serif; color: var(--text); }
+        footer small { font-size: 0.7rem; color: var(--text-faint); display: block; margin-top: 0.75rem; }
+    </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav aria-label="Main navigation">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <svg width="22" height="18" viewBox="0 0 44 36" fill="none" aria-hidden="true">
+                <path d="M22 30 C22 30 8 22 8 12 C8 6 14 4 18 8 C19 4 20 2 22 2 C24 2 25 4 26 8 C30 4 36 6 36 12 C36 22 22 30 22 30Z" fill="rgba(13,148,136,0.7)"/>
+                <path d="M22 30 C22 30 4 24 2 14 C0 6 8 2 14 8 C16 4 18 2 22 2" fill="rgba(13,148,136,0.35)"/>
+                <path d="M22 30 C22 30 40 24 42 14 C44 6 36 2 30 8 C28 4 26 2 22 2" fill="rgba(13,148,136,0.35)"/>
+            </svg>
+            The Laughing Philosophress
+        </a>
+        <div class="nav-links">
+            <a href="index.html#about">About</a>
+            <a href="index.html#library">Reflections</a>
+            <a href="index.html#connect">Invite Me</a>
+            <a href="support.html" aria-current="page">Support</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ── HERO ── -->
+<header id="hero" class="relative">
+    <!-- Bamboo Left -->
+    <div class="bamboo-wrap bamboo-left" aria-hidden="true">
+        <svg viewBox="0 0 140 900" preserveAspectRatio="xMidYMax meet" style="width:100%;height:100%;">
+            <g class="sway1">
+                <rect x="30" y="40" width="16" height="860" rx="5" fill="#5a7a4a"/>
+                <rect x="28" y="160" width="20" height="9" rx="3" fill="#3d5a2a"/>
+                <rect x="28" y="310" width="20" height="9" rx="3" fill="#3d5a2a"/>
+                <rect x="28" y="460" width="20" height="9" rx="3" fill="#3d5a2a"/>
+                <ellipse cx="30" cy="154" rx="26" ry="8" fill="#6b9060" transform="rotate(-32 30 154)"/>
+                <ellipse cx="46" cy="138" rx="22" ry="7" fill="#5a7a4a" transform="rotate(22 46 138)"/>
+                <ellipse cx="30" cy="304" rx="28" ry="8" fill="#6b9060" transform="rotate(-28 30 304)"/>
+                <ellipse cx="30" cy="454" rx="24" ry="7" fill="#6b9060" transform="rotate(-30 30 454)"/>
+            </g>
+            <g class="sway2" style="transform-origin:90px 900px;">
+                <rect x="82" y="120" width="13" height="780" rx="4" fill="#4a6a3a"/>
+                <rect x="80" y="240" width="17" height="7" rx="2" fill="#3d5a2a"/>
+                <rect x="80" y="390" width="17" height="7" rx="2" fill="#3d5a2a"/>
+                <ellipse cx="82" cy="234" rx="22" ry="6" fill="#6b9060" transform="rotate(-20 82 234)"/>
+            </g>
+        </svg>
+    </div>
+    <!-- Bamboo Right -->
+    <div class="bamboo-wrap bamboo-right" aria-hidden="true">
+        <svg viewBox="0 0 140 900" preserveAspectRatio="xMidYMax meet" style="width:100%;height:100%;">
+            <g class="sway2">
+                <rect x="30" y="40" width="16" height="860" rx="5" fill="#5a7a4a"/>
+                <rect x="28" y="160" width="20" height="9" rx="3" fill="#3d5a2a"/>
+                <rect x="28" y="310" width="20" height="9" rx="3" fill="#3d5a2a"/>
+                <ellipse cx="46" cy="154" rx="26" ry="8" fill="#6b9060" transform="rotate(32 46 154)"/>
+                <ellipse cx="46" cy="304" rx="28" ry="8" fill="#6b9060" transform="rotate(28 46 304)"/>
+            </g>
+        </svg>
+    </div>
+
+    <!-- Water ripples -->
+    <div style="position:absolute;bottom:40px;left:50%;transform:translateX(-50%);opacity:0.1;pointer-events:none;" aria-hidden="true">
+        <svg width="300" height="100" viewBox="0 0 300 100">
+            <ellipse cx="150" cy="50" rx="0" ry="0" fill="none" stroke="#0d9488" stroke-width="1.5" class="ripple-1"/>
+            <ellipse cx="150" cy="50" rx="0" ry="0" fill="none" stroke="#0d9488" stroke-width="1" class="ripple-2"/>
+            <ellipse cx="150" cy="50" rx="0" ry="0" fill="none" stroke="#0d9488" stroke-width="1" class="ripple-3"/>
+        </svg>
+    </div>
+
+    <div class="relative" style="z-index:10; max-width:640px; margin:0 auto;">
+        <p class="eyebrow fade-up">Keep the light on</p>
+        <h1 class="fade-up delay-1">
+            Support the<br>
+            <em class="brush-underline">Cosmic Wonder</em>
+        </h1>
+        <p class="fade-up delay-2">
+            This work — the reflections, the tools, the conversations — lives here freely because of people who believe independent philosophical voices matter. If something here has moved you, made you laugh, or helped you breathe a little easier, consider passing a little of that energy back.
+        </p>
+        <div class="fade-up delay-3" style="display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:center;">
+            <a href="#support" class="btn-primary">Choose how to give ↓</a>
+            <a href="#why" class="btn-outline">Why it matters</a>
+        </div>
+    </div>
+</header>
+
+<!-- ── ZEN DIVIDER ── -->
+<div style="padding:1.5rem 2rem;background:var(--white);">
+    <div class="zen-divider" style="max-width:640px;">
+        <svg width="26" height="26" viewBox="0 0 60 60" fill="none" opacity="0.5" aria-hidden="true">
+            <path d="M30 6 A24 24 0 1 1 42 10" stroke="#0d9488" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+    </div>
+</div>
+
+<!-- ── WHY IT MATTERS ── -->
+<section id="why">
+    <div class="container">
+        <p class="eyebrow">Why support this work</p>
+        <h2 class="serif" style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:400;color:var(--text);line-height:1.2;max-width:480px;">
+            What your generosity <em>actually</em> sustains
+        </h2>
+        <div class="why-grid">
+            <div class="why-card">
+                <svg class="why-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                <h3>Free reflections, forever</h3>
+                <p>The writing here — on compassion, suffering, connection, and laughter — will never be paywalled. Your support is what makes "free" actually possible.</p>
+            </div>
+            <div class="why-card">
+                <svg class="why-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                <h3>Healing tools that actually work</h3>
+                <p>The Nervous System First Aid tool, and the interactive resources being built, take real time and thought. Your contribution funds that creative labor directly.</p>
+            </div>
+            <div class="why-card">
+                <svg class="why-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                <h3>An independent voice</h3>
+                <p>No algorithm to appease. No sponsor to soften for. This space exists outside the noise — and your support is the reason it can stay that way.</p>
+            </div>
+            <div class="why-card">
+                <svg class="why-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                <h3>Basic survival</h3>
+                <p>This work is created by a person living with disability, doing this entirely on their own. Your support isn't just kind — it is genuinely, practically necessary.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── STORY ── -->
+<section id="story" style="background:var(--cream);padding:5rem 1.5rem;">
+    <div class="container">
+        <p class="eyebrow">A little honesty</p>
+        <div class="story-inner">
+            <h2 class="serif" style="font-size:clamp(1.7rem,3.5vw,2.5rem);font-weight:400;color:var(--text);line-height:1.2;margin-bottom:1.5rem;">
+                The person behind the wonder
+            </h2>
+            <p>
+                I am Julia — The Laughing Philosophress. I spent years as a geek, a student of contemplative practice, a Geek Squad technician, and always, always a person who believed that <strong>wisdom and humor belong together</strong> in the same breath.
+            </p>
+            <p>
+                Disability changed the shape of my life. It took the nine-to-five, the steady income, the comfortable predictability. What it could not take was the curiosity. The drive to understand why we suffer, why we connect, and why the universe is, as Neil deGrasse Tyson put it, under absolutely no obligation to make sense to us — and that is somehow hilarious and beautiful at once.
+            </p>
+            <div class="quote-bar">
+                "I don't force answers — I explore questions. The exploration itself is the point."
+            </div>
+            <p>
+                This website is where that exploration lives. It costs nothing to read. It costs something to make. If you have received anything of value here — a moment of recognition, a lighter heart, a new way of looking at something old — I would be genuinely grateful for your support.
+            </p>
+            <p>
+                There is no minimum. There is no membership pressure. A single coffee, a one-time gift, a share with a friend who needs this — all of it matters more than you know.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ── ZEN DIVIDER ── -->
+<div style="padding:1.5rem 2rem;background:var(--white);">
+    <div class="zen-divider" style="max-width:640px;">
+        <svg width="26" height="26" viewBox="0 0 60 60" fill="none" opacity="0.4" aria-hidden="true">
+            <path d="M30 6 A24 24 0 1 1 42 10" stroke="#0d9488" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+    </div>
+</div>
+
+<!-- ── SUPPORT OPTIONS ── -->
+<section id="support">
+    <div class="container">
+        <p class="eyebrow">Ways to support</p>
+        <h2 class="serif" style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:400;color:var(--text);line-height:1.2;max-width:520px;">
+            Every gesture, <em>every size</em>, is felt.
+        </h2>
+        <p style="color:var(--text-soft);font-weight:300;margin-top:0.75rem;max-width:52ch;">
+            Choose whatever feels right. All options go directly to me — no platform takes a cut except the payment processor's standard fee.
+        </p>
+        <div class="support-grid">
+
+            <!-- Buy Me a Coffee -->
+            <div class="support-card card-bmc">
+                <div class="card-top">
+                    <svg class="card-icon" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+                        <rect width="36" height="36" rx="8" fill="#FFDD00"/>
+                        <text x="18" y="25" font-size="18" text-anchor="middle" font-family="serif">☕</text>
+                    </svg>
+                    <h3>Buy Me a Coffee</h3>
+                </div>
+                <p>The gentlest entry point. One coffee = one moment of warmth sent across the ether. No account required.</p>
+                <a href="https://buymeacoffee.com/cosmic.wonder" target="_blank" rel="noopener noreferrer" class="btn-bmc">
+                    ☕ Buy a coffee
+                </a>
+            </div>
+
+            <!-- PayPal -->
+            <div class="support-card card-paypal">
+                <div class="card-top">
+                    <svg class="card-icon" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+                        <rect width="36" height="36" rx="8" fill="#003087"/>
+                        <text x="18" y="25" font-size="16" text-anchor="middle" fill="#009cde" font-family="sans-serif" font-weight="bold">P</text>
+                    </svg>
+                    <h3>PayPal</h3>
+                </div>
+                <p>Send any amount directly via PayPal — the most universally trusted option, one-time or recurring.</p>
+                <a href="https://paypal.me/juliazendancer" target="_blank" rel="noopener noreferrer" class="btn-paypal">
+                    Donate via PayPal
+                </a>
+            </div>
+
+            <!-- Venmo -->
+            <div class="support-card card-venmo">
+                <div class="card-top">
+                    <svg class="card-icon" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+                        <rect width="36" height="36" rx="8" fill="#008CFF"/>
+                        <text x="18" y="25" font-size="14" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="bold">V</text>
+                    </svg>
+                    <h3>Venmo</h3>
+                </div>
+                <p>Quick and casual — if Venmo is already on your phone, this is the fastest way to send a few dollars of support.</p>
+                <a href="https://venmo.com/u/Juls-Ohmz" target="_blank" rel="noopener noreferrer" class="btn-venmo">
+                    Send via Venmo
+                </a>
+            </div>
+
+            <!-- GitHub Sponsors -->
+            <div class="support-card card-gh">
+                <div class="card-top">
+                    <svg class="card-icon" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+                        <rect width="36" height="36" rx="8" fill="#bf3a86"/>
+                        <text x="18" y="25" font-size="16" text-anchor="middle">🩷</text>
+                    </svg>
+                    <h3>GitHub Sponsors</h3>
+                </div>
+                <p>For those who appreciate that this site itself is a piece of thoughtfully crafted open work. Sponsor directly on GitHub.</p>
+                <a href="https://github.com/sponsors/gi-k-glacier-0705" target="_blank" rel="noopener noreferrer" class="btn-gh">
+                    Sponsor on GitHub
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ── RIPPLE AMOUNT NUDGE ── -->
+<div id="bmc-anchor" style="background:var(--cream);padding:4rem 1.5rem;text-align:center;">
+    <p class="eyebrow" style="margin-bottom:0.5rem;">Not sure how much?</p>
+    <h3 class="serif" style="font-size:1.5rem;font-weight:400;color:var(--text);margin-bottom:0.5rem;">Pick a ripple size.</h3>
+    <p style="color:var(--text-soft);font-size:0.9rem;font-weight:300;max-width:38ch;margin:0 auto;">Each one reaches further than you think.</p>
+    <div class="ripple-amounts" role="group" aria-label="Suggested donation amounts">
+        <a href="https://buymeacoffee.com/cosmic.wonder" target="_blank" rel="noopener noreferrer" class="amt-btn">$3 — A coffee</a>
+        <a href="https://buymeacoffee.com/cosmic.wonder" target="_blank" rel="noopener noreferrer" class="amt-btn">$9 — A week of hosting</a>
+        <a href="https://buymeacoffee.com/cosmic.wonder" target="_blank" rel="noopener noreferrer" class="amt-btn">$18 — A day of creating</a>
+        <a href="https://paypal.me/juliazendancer" target="_blank" rel="noopener noreferrer" class="amt-btn">$36 — A month of momentum</a>
+        <a href="https://paypal.me/juliazendancer" target="_blank" rel="noopener noreferrer" class="amt-btn">Choose my own ✦</a>
+    </div>
+</div>
+
+<!-- ── CLOSING THOUGHT ── -->
+<section style="background:var(--white);padding:5rem 1.5rem;text-align:center;overflow:hidden;position:relative;">
+    <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);opacity:0.04;pointer-events:none;" aria-hidden="true">
+        <svg width="400" height="400" viewBox="0 0 80 80" fill="none">
+            <path d="M40 8 A32 32 0 1 1 54 13" stroke="#0d9488" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+    </div>
+    <div style="position:relative;z-index:1;max-width:520px;margin:0 auto;">
+        <svg width="64" height="64" viewBox="0 0 80 80" fill="none" style="margin:0 auto 1.5rem;opacity:0.28;" aria-hidden="true">
+            <path d="M40 8 A32 32 0 1 1 54 13" stroke="#0d9488" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+        <p class="eyebrow">A final thought</p>
+        <p class="serif" style="font-size:1.4rem;font-style:italic;color:var(--text);line-height:1.6;margin-bottom:1.25rem;">
+            "Even a single candle changes the nature of the darkness."
+        </p>
+        <p style="color:var(--text-soft);font-weight:300;font-size:0.95rem;margin-bottom:2rem;">
+            Whether you give today, bookmark this page for later, or simply share it with someone who might need it — thank you. Truly. The circle continues.
+        </p>
+        <a href="index.html" class="btn-outline">← Return to the Garden</a>
+    </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <div class="zen-divider" style="max-width:280px;margin:0 auto 1.25rem;">
+        <svg width="18" height="15" viewBox="0 0 44 36" fill="none" opacity="0.4" aria-hidden="true">
+            <path d="M22 30 C22 30 8 22 8 12 C8 6 14 4 18 8 C19 4 20 2 22 2 C24 2 25 4 26 8 C30 4 36 6 36 12 C36 22 22 30 22 30Z" fill="#0d9488"/>
+        </svg>
+    </div>
+    <p class="serif-name">The Laughing Philosophress</p>
+    <p style="margin-top:0.25rem;">Respecting the unknown. Celebrating the absurd.</p>
+    <small>© 2026 · Built with ❤ and Stardust</small>
+</footer>
+
+</body>
+</html>
