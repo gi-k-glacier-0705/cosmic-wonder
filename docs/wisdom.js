@@ -1,16 +1,16 @@
 // 1. Unified Data
 const insights = [
-    { quote: "No one is dumb who is curious.  The people who don't ask questions remain clueless throughout their lives.", author: "The Laughing Philosophress" },
+    { quote: "The universe is under no obligation to make sense to you.", author: "Neil deGrasse Tyson" },
+    { quote: "Do not seek that the things which happen should happen as you wish; but wish the things which happen to be as they are.", author: "Epictetus" },
+    { quote: "You have power over your mind, not outside events.", author: "Marcus Aurelius" },
+    { quote: "Knowing others is intelligence; knowing yourself is true wisdom. Mastering others is strength; mastering yourself is true power.", author: "Lao Tzu" },
     { quote: "My middle name is Curiosity.", author: "The Laughing Philosophress" },
     { quote: "Be like water", author: "Bruce Lee" },
     { quote: "A river doesn't fight, it flows. Stress arises when you resist reality.", author: "The Laughing Philosophress" },
     { quote: "Don't fight. Win.", author: "Thaddeus Holmes, Shidoshi" },
     { quote: "Humor is the sound of suffering meeting grace.", author: "The Laughing Philosophress" },
-    { quote: "Do not seek that the things which happen should happen as you wish; but wish the things which happen to be as they are.", author: "Epictetus" },
-    { quote: "You have power over your mind, not outside events.", author: "Marcus Aurelius" },
-    { quote: "Knowing others is intelligence; knowing yourself is true wisdom. Mastering others is strength; mastering yourself is true power.", author: "Lao Tzu" },
-    { quote: "The universe is under no obligation to make sense to you.", author: "Neil deGrasse Tyson" },
-    { quote: "I'm not allowed to rush. I give you permission to be gentle.", author: "The Laughing Philosophress" }
+    { quote: "I'm not allowed to rush. I give you permission to be gentle.", author: "The Laughing Philosophress" },
+    { quote: "No one is dumb who is curious.  The people who don't ask questions remain clueless throughout their lives.", author: "Neil deGrasse Tyson" },
 ];
 
 // 2. Helper: Copy Function
