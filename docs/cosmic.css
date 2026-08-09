@@ -1,0 +1,1030 @@
+/* =========================================================
+   COSMIC WONDER
+   Observatory Foundation
+   ========================================================= */
+
+:root {
+  /* ---------- Core palette ---------- */
+
+  --cosmos-void: #080b12;
+  --cosmos-night: #0d1220;
+  --cosmos-deep: #121a2b;
+  --cosmos-surface: #172238;
+  --cosmos-surface-raised: #1d2a42;
+
+  --ink: #f3f0e8;
+  --ink-soft: #c9c8c2;
+  --ink-muted: #9699a3;
+
+  --paper: #f3efe4;
+  --paper-warm: #e8e0ce;
+  --paper-ink: #1c211f;
+  --paper-muted: #666961;
+
+  /* ---------- Cosmic accents ---------- */
+
+  --star: #fff8dc;
+  --moon: #d9d3c3;
+  --cosmic-blue: #8eb8d8;
+  --cosmic-blue-bright: #b7d9ee;
+  --cosmic-teal: #78b9aa;
+  --cosmic-teal-dark: #39796f;
+  --cosmic-gold: #d6b56d;
+  --cosmic-copper: #b98262;
+
+  /* ---------- Functional colors ---------- */
+
+  --focus: #b9dcff;
+  --success: #8fc8a3;
+  --warning: #e1bf79;
+  --danger: #d98e8e;
+
+  /* ---------- Typography ---------- */
+
+  --font-display:
+    "Cormorant Garamond",
+    "Iowan Old Style",
+    "Palatino Linotype",
+    Palatino,
+    Georgia,
+    serif;
+
+  --font-body:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  --font-mono:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    monospace;
+
+  /* ---------- Scale ---------- */
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.25rem;
+  --text-4xl: 3rem;
+  --text-5xl: 4rem;
+
+  /* ---------- Spacing ---------- */
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* ---------- Shape ---------- */
+
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+  --radius-pill: 999px;
+
+  /* ---------- Shadows ---------- */
+
+  --shadow-soft:
+    0 1rem 3rem rgba(0, 0, 0, 0.18);
+
+  --shadow-deep:
+    0 2rem 5rem rgba(0, 0, 0, 0.3);
+
+  /* ---------- Motion ---------- */
+
+  --ease-out:
+    cubic-bezier(0.22, 1, 0.36, 1);
+
+  --ease-smooth:
+    cubic-bezier(0.4, 0, 0.2, 1);
+
+  --duration-fast: 180ms;
+  --duration-normal: 320ms;
+  --duration-slow: 700ms;
+
+  /* ---------- Layout ---------- */
+
+  --content-width: 72rem;
+  --reading-width: 46rem;
+
+  --mobile-nav-height: 4.5rem;
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+  background: var(--cosmos-void);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+
+  color: var(--ink);
+  background:
+    radial-gradient(
+      circle at 50% -20%,
+      rgba(70, 102, 140, 0.2),
+      transparent 45%
+    ),
+    var(--cosmos-void);
+
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.65;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  color: var(--cosmos-void);
+  background: var(--cosmic-gold);
+}
+
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2.75rem, 12vw, var(--text-5xl));
+}
+
+h2 {
+  font-size: clamp(2rem, 8vw, var(--text-4xl));
+}
+
+h3 {
+  font-size: clamp(1.5rem, 5vw, var(--text-2xl));
+}
+
+p {
+  margin: 0;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  color: var(--cosmic-gold);
+
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  width: 1.5rem;
+  height: 1px;
+  content: "";
+  background: currentColor;
+}
+
+.muted {
+  color: var(--ink-muted);
+}
+
+.reading-width {
+  width: min(100%, var(--reading-width));
+}
+
+
+/* =========================================================
+   COSMIC FIELD
+   ========================================================= */
+
+.cosmic-page {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  isolation: isolate;
+}
+
+.cosmic-page::before {
+  position: fixed;
+  z-index: -3;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+
+  background-image:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(255, 248, 220, 0.18) 0 1px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle at 75% 65%,
+      rgba(255, 248, 220, 0.12) 0 1px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle at 55% 18%,
+      rgba(255, 248, 220, 0.1) 0 1px,
+      transparent 1.5px
+    );
+
+  background-size:
+    17rem 19rem,
+    23rem 27rem,
+    31rem 29rem;
+
+  opacity: 0.55;
+}
+
+.cosmic-page::after {
+  position: fixed;
+  z-index: -2;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(120, 185, 170, 0.1),
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse at 100% 100%,
+      rgba(142, 184, 216, 0.07),
+      transparent 40%
+    );
+
+  mix-blend-mode: screen;
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.cosmic-container {
+  width: min(
+    calc(100% - 2rem),
+    var(--content-width)
+  );
+
+  margin-inline: auto;
+}
+
+.cosmic-section {
+  position: relative;
+  padding-block: clamp(
+    var(--space-16),
+    14vw,
+    var(--space-24)
+  );
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.cosmic-header {
+  position: relative;
+  z-index: 20;
+
+  padding-top: calc(
+    var(--space-4) + var(--safe-top)
+  );
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+  background:
+    rgba(8, 11, 18, 0.72);
+
+  backdrop-filter: blur(1rem);
+  -webkit-backdrop-filter: blur(1rem);
+}
+
+.cosmic-header-inner {
+  display: flex;
+  min-height: 4rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.cosmic-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.cosmic-brand-mark {
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+
+  place-items: center;
+
+  border: 1px solid rgba(214, 181, 109, 0.55);
+  border-radius: 50%;
+
+  color: var(--cosmic-gold);
+
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+}
+
+.cosmic-brand-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: 0.03em;
+}
+
+.cosmic-desktop-nav {
+  display: none;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.cosmic-hero {
+  position: relative;
+
+  display: grid;
+  min-height: min(
+    45rem,
+    calc(100svh - 4rem)
+  );
+
+  align-items: center;
+
+  padding-block:
+    clamp(4rem, 14vh, 9rem)
+    clamp(4rem, 10vh, 7rem);
+}
+
+.cosmic-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.cosmic-hero h1 {
+  max-width: 10ch;
+  margin-top: var(--space-4);
+}
+
+.cosmic-hero-lede {
+  max-width: 38rem;
+  margin-top: var(--space-6);
+
+  color: var(--ink-soft);
+
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 4vw, 1.7rem);
+  line-height: 1.4;
+}
+
+.cosmic-hero-orbit {
+  position: absolute;
+  z-index: 0;
+
+  top: 50%;
+  right: -10rem;
+
+  width: 22rem;
+  height: 22rem;
+
+  border:
+    1px solid rgba(214, 181, 109, 0.18);
+
+  border-radius: 50%;
+
+  transform:
+    translateY(-50%)
+    rotate(-18deg);
+}
+
+.cosmic-hero-orbit::before,
+.cosmic-hero-orbit::after {
+  position: absolute;
+  content: "";
+  border-radius: 50%;
+}
+
+.cosmic-hero-orbit::before {
+  inset: 12%;
+  border:
+    1px solid rgba(120, 185, 170, 0.16);
+}
+
+.cosmic-hero-orbit::after {
+  top: 8%;
+  left: 48%;
+
+  width: 0.45rem;
+  height: 0.45rem;
+
+  background: var(--cosmic-gold);
+  box-shadow:
+    0 0 1rem rgba(214, 181, 109, 0.7);
+
+  transform: translateX(-50%);
+}
+
+
+/* =========================================================
+   PORTAL GRID
+   ========================================================= */
+
+.portal-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  margin-top: var(--space-10);
+}
+
+.portal {
+  position: relative;
+
+  display: flex;
+  min-height: 11rem;
+
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: var(--space-6);
+
+  overflow: hidden;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.1);
+
+  border-radius: var(--radius-lg);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(29, 42, 66, 0.82),
+      rgba(13, 18, 32, 0.72)
+    );
+
+  text-decoration: none;
+
+  box-shadow: var(--shadow-soft);
+
+  transition:
+    transform var(--duration-normal) var(--ease-out),
+    border-color var(--duration-normal) var(--ease-smooth),
+    background var(--duration-normal) var(--ease-smooth);
+}
+
+.portal::after {
+  position: absolute;
+  right: -3rem;
+  bottom: -4rem;
+
+  width: 10rem;
+  height: 10rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+
+  content: "";
+}
+
+.portal:hover {
+  transform: translateY(-0.25rem);
+
+  border-color:
+    rgba(214, 181, 109, 0.4);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(35, 53, 79, 0.92),
+      rgba(13, 18, 32, 0.82)
+    );
+}
+
+.portal:active {
+  transform: translateY(-0.1rem);
+}
+
+.portal-symbol {
+  font-size: 1.5rem;
+}
+
+.portal-title {
+  margin-top: var(--space-8);
+
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+}
+
+.portal-description {
+  max-width: 30rem;
+  margin-top: var(--space-2);
+
+  color: var(--ink-muted);
+  font-size: var(--text-sm);
+}
+
+.portal-arrow {
+  position: absolute;
+  top: var(--space-6);
+  right: var(--space-6);
+
+  color: var(--cosmic-gold);
+
+  font-size: 1.25rem;
+
+  transition:
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.portal:hover .portal-arrow {
+  transform: translate(0.25rem, -0.25rem);
+}
+
+
+/* =========================================================
+   OBSERVATION CARD
+   ========================================================= */
+
+.observation {
+  position: relative;
+
+  margin-top: var(--space-10);
+  padding: clamp(var(--space-6), 7vw, var(--space-10));
+
+  overflow: hidden;
+
+  color: var(--paper-ink);
+
+  border-radius: var(--radius-xl);
+
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(214, 181, 109, 0.22),
+      transparent 30%
+    ),
+    var(--paper);
+
+  box-shadow: var(--shadow-deep);
+}
+
+.observation::before {
+  position: absolute;
+  top: -6rem;
+  right: -4rem;
+
+  width: 16rem;
+  height: 16rem;
+
+  border: 1px solid rgba(28, 33, 31, 0.12);
+  border-radius: 50%;
+
+  content: "";
+}
+
+.observation-label {
+  color: var(--cosmic-teal-dark);
+
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.observation-title {
+  position: relative;
+
+  margin-top: var(--space-3);
+
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 8vw, 3.25rem);
+}
+
+.observation-text {
+  position: relative;
+
+  max-width: 42rem;
+  margin-top: var(--space-5);
+
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 4vw, 1.65rem);
+  line-height: 1.45;
+}
+
+.observation-action {
+  position: relative;
+
+  display: inline-flex;
+
+  margin-top: var(--space-8);
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.cosmic-button {
+  display: inline-flex;
+  min-height: 3rem;
+
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+
+  padding:
+    0.75rem
+    1.15rem;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.18);
+
+  border-radius: var(--radius-pill);
+
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.05);
+
+  cursor: pointer;
+
+  text-decoration: none;
+
+  transition:
+    background var(--duration-fast) var(--ease-smooth),
+    border-color var(--duration-fast) var(--ease-smooth),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.cosmic-button:hover {
+  border-color: rgba(214, 181, 109, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.cosmic-button:active {
+  transform: scale(0.98);
+}
+
+.cosmic-button-primary {
+  color: var(--cosmos-void);
+  border-color: var(--cosmic-gold);
+  background: var(--cosmic-gold);
+}
+
+.cosmic-button-primary:hover {
+  background: var(--star);
+}
+
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 4px;
+}
+
+
+/* =========================================================
+   DIVIDERS
+   ========================================================= */
+
+.cosmic-divider {
+  width: 100%;
+  height: 1px;
+  margin-block: var(--space-8);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.16),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   MOBILE NAVIGATION
+   ========================================================= */
+
+.cosmic-mobile-nav {
+  position: fixed;
+  z-index: 50;
+
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  height:
+    calc(
+      var(--mobile-nav-height)
+      + var(--safe-bottom)
+    );
+
+  padding-bottom: var(--safe-bottom);
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.09);
+
+  background:
+    rgba(8, 11, 18, 0.88);
+
+  backdrop-filter: blur(1.25rem);
+  -webkit-backdrop-filter: blur(1.25rem);
+}
+
+.cosmic-mobile-nav a {
+  display: flex;
+
+  min-width: 0;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+
+  color: var(--ink-muted);
+
+  font-size: 0.65rem;
+  text-decoration: none;
+
+  transition:
+    color var(--duration-fast) var(--ease-smooth);
+}
+
+.cosmic-mobile-nav a[aria-current="page"],
+.cosmic-mobile-nav a:hover {
+  color: var(--cosmic-gold);
+}
+
+.cosmic-mobile-nav-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+
+/* =========================================================
+   PAPER / WISDOM SECTIONS
+   ========================================================= */
+
+.paper-section {
+  color: var(--paper-ink);
+  background: var(--paper);
+}
+
+.paper-section .eyebrow {
+  color: var(--cosmic-teal-dark);
+}
+
+.paper-section .muted {
+  color: var(--paper-muted);
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .portal:hover {
+    transform: none;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (min-width: 40rem) {
+  .cosmic-container {
+    width: min(
+      calc(100% - 3rem),
+      var(--content-width)
+    );
+  }
+
+  .portal-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .portal:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .cosmic-hero-orbit {
+    right: -5rem;
+    width: 28rem;
+    height: 28rem;
+  }
+}
+
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 64rem) {
+  :root {
+    --text-5xl: 5.5rem;
+  }
+
+  .cosmic-desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .cosmic-desktop-nav a {
+    position: relative;
+
+    color: var(--ink-muted);
+
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .cosmic-desktop-nav a::after {
+    position: absolute;
+
+    right: 0;
+    bottom: -0.5rem;
+    left: 0;
+
+    height: 1px;
+
+    content: "";
+
+    background: var(--cosmic-gold);
+
+    transform:
+      scaleX(0);
+
+    transform-origin: right;
+
+    transition:
+      transform var(--duration-normal) var(--ease-out);
+  }
+
+  .cosmic-desktop-nav a:hover {
+    color: var(--ink);
+  }
+
+  .cosmic-desktop-nav a:hover::after {
+    transform:
+      scaleX(1);
+
+    transform-origin: left;
+  }
+
+  .cosmic-mobile-nav {
+    display: none;
+  }
+
+  .cosmic-hero {
+    min-height: 48rem;
+  }
+
+  .cosmic-hero-orbit {
+    right: 3%;
+    width: 34rem;
+    height: 34rem;
+  }
+
+  .portal-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .portal:last-child {
+    grid-column: auto;
+  }
+
+  .portal {
+    min-height: 17rem;
+  }
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 90rem) {
+  .cosmic-hero-orbit {
+    right: 8%;
+    width: 40rem;
+    height: 40rem;
+  }
+}
+
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
+@media print {
+  .cosmic-header,
+  .cosmic-mobile-nav,
+  .cosmic-hero-orbit {
+    display: none;
+  }
+
+  body {
+    color: #000;
+    background: #fff;
+  }
+}
