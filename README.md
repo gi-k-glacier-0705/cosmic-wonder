@@ -35,4 +35,4 @@ If your community needs a compassionate, humorous perspective, or if you just wa
 > "The universe is under no obligation to make sense to you." — *Neil deGrasse Tyson*
 
 ---
-© 2026 The Laughing Philosophress. *Respecting the unknown. Celebrating the absurd.*
+© 2026 Geek Gelasia. *Respecting the unknown. Celebrating the absurd.*
