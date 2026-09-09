@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A small cosmic perspective machine from Geek Gelasia and The Laughing Philosophress.">
+  <meta name="theme-color" content="#0b1020">
+  <title>You Are Here · Cosmic Perspective Machine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#eef2ff; --muted:#a8b3cf; --line:rgba(255,255,255,.13); --teal:#62d7c5; --gold:#ffd58a; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; font-family:Inter,system-ui,sans-serif; color:var(--ink); background:radial-gradient(circle at 50% 15%,#26365f 0,#121a32 32%,#080b16 72%); overflow-x:hidden; }
+    body:before { content:""; position:fixed; inset:0; pointer-events:none; opacity:.65; background-image:radial-gradient(circle at 10% 18%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 72% 12%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 30% 72%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 85% 62%,#fff 0 1px,transparent 1.5px); background-size:280px 280px,370px 370px,410px 410px,510px 510px; animation:drift 90s linear infinite; }
+    @keyframes drift { to { background-position:280px 180px,-370px 220px,300px -410px,-500px -240px; } }
+    main { width:min(920px,92vw); margin:auto; padding:32px 0 80px; position:relative; }
+    nav { display:flex; justify-content:space-between; align-items:center; margin-bottom:64px; font-size:.82rem; letter-spacing:.12em; text-transform:uppercase; }
+    a { color:var(--muted); text-decoration:none; } a:hover { color:var(--teal); }
+    .brand { color:var(--teal); font-weight:600; }
+    h1,h2 { font-family:Lora,serif; font-weight:400; }
+    h1 { font-size:clamp(3rem,10vw,7rem); line-height:.95; margin:0; letter-spacing:-.045em; }
+    .lede { max-width:650px; font-size:clamp(1rem,2vw,1.22rem); line-height:1.75; color:var(--muted); margin:24px 0 48px; }
+    .machine { border:1px solid var(--line); border-radius:24px; padding:clamp(20px,5vw,48px); background:rgba(8,11,22,.52); backdrop-filter:blur(10px); box-shadow:0 24px 80px rgba(0,0,0,.28); }
+    .scale { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin:28px 0 36px; }
+    .step { border:1px solid var(--line); background:transparent; color:var(--muted); border-radius:999px; padding:10px 8px; font-size:.7rem; cursor:pointer; transition:.25s; }
+    .step:hover,.step.active { border-color:var(--teal); color:#07121b; background:var(--teal); }
+    .scene { min-height:360px; display:grid; place-items:center; position:relative; overflow:hidden; border-radius:18px; background:radial-gradient(circle at center,rgba(98,215,197,.11),transparent 28%),#090d19; border:1px solid var(--line); }
+    .orb { width:var(--size); height:var(--size); border-radius:50%; position:absolute; box-shadow:0 0 45px rgba(255,213,138,.18); transition:all .8s cubic-bezier(.2,.8,.2,1); }
+    .earth { --size:110px; background:radial-gradient(circle at 35% 30%,#a7e5ff,#3076a7 43%,#16354e 72%); }
+    .sun { --size:220px; background:radial-gradient(circle,#fff6c6 0,#ffd36b 40%,#ff8b42 72%,transparent 73%); filter:blur(.1px); opacity:.9; }
+    .galaxy { --size:520px; border:2px solid rgba(174,127,255,.4); background:radial-gradient(ellipse,rgba(255,255,255,.35),rgba(145,88,255,.15) 35%,transparent 68%); transform:rotate(-18deg); }
+    .universe { --size:760px; border:1px dashed rgba(98,215,197,.35); background:radial-gradient(circle,rgba(98,215,197,.1),transparent 65%); }
+    .caption { margin:28px auto 0; max-width:690px; text-align:center; }
+    .eyebrow { color:var(--gold); letter-spacing:.16em; text-transform:uppercase; font-size:.72rem; }
+    #title { font-size:clamp(1.8rem,4vw,3rem); margin:10px 0 12px; }
+    #text { color:var(--muted); line-height:1.75; min-height:80px; }
+    .controls { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:26px; }
+    button.action { border:1px solid var(--line); border-radius:999px; padding:12px 18px; color:var(--ink); background:rgba(255,255,255,.05); cursor:pointer; font:inherit; transition:.2s; }
+    button.action:hover { transform:translateY(-1px); border-color:var(--gold); }
+    .tiny { margin-top:52px; color:#78839f; text-align:center; font-size:.84rem; line-height:1.7; }
+    @media (max-width:650px){ nav{margin-bottom:42px}.scale{grid-template-columns:1fr 1fr}.step:last-child{grid-column:1/-1}.scene{min-height:310px}.galaxy{--size:430px}.universe{--size:620px} }
+    @media (prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;transition-duration:.001ms!important} }
+  </style>
+</head>
+<body>
+<main>
+  <nav>
+    <a class="brand" href="index.html">← Cosmic Wonder</a>
+    <span>Geek Gelasia's Perspective Machine</span>
+  </nav>
+
+  <header>
+    <div class="eyebrow">A calibration device for overthinking</div>
+    <h1>You are here.</h1>
+    <p class="lede">Technically, you are also on a planet, orbiting a star, moving through a galaxy, inside a universe whose full size we still cannot measure. This is not intended to diminish your problems. It is intended to put them somewhere interesting.</p>
+  </header>
+
+  <section class="machine" aria-live="polite">
+    <div class="scale" id="scale">
+      <button class="step active" data-level="0">You</button>
+      <button class="step" data-level="1">Earth</button>
+      <button class="step" data-level="2">Solar System</button>
+      <button class="step" data-level="3">Milky Way</button>
+      <button class="step" data-level="4">Observable Universe</button>
+    </div>
+
+    <div class="scene" id="scene" aria-hidden="true"></div>
+
+    <div class="caption">
+      <div class="eyebrow" id="eyebrow">Level 1 of 5</div>
+      <h2 id="title">The Immediate Universe</h2>
+      <p id="text">Start here. Your nervous system is receiving signals, your body is doing an astonishing amount of maintenance without asking permission, and something probably needs a snack.</p>
+      <div class="controls">
+        <button class="action" id="zoomOut">Zoom out ↗</button>
+        <button class="action" id="randomThought">Give me a cosmic thought</button>
+      </div>
+    </div>
+  </section>
+
+  <p class="tiny">Built as a reminder that perspective is not denial. Your life is simultaneously tiny on a cosmic scale and immeasurably significant at human scale. Both things can be true. 🌌</p>
+</main>
+
+<script>
+const levels = [
+  { eyebrow:"Level 1 of 5", title:"The Immediate Universe", text:"Start here. Your nervous system is receiving signals, your body is doing an astonishing amount of maintenance without asking permission, and something probably needs a snack.", objects:[["earth",110]], thought:"You do not need to understand the entire universe before making tea." },
+  { eyebrow:"Level 2 of 5", title:"A Small Blue Planet", text:"Earth is large enough to contain every person you have ever loved, every argument you have ever regretted, and approximately 8 billion simultaneous attempts at figuring things out.", objects:[["earth",110]], thought:"The planet has survived worse meetings than this one." },
+  { eyebrow:"Level 3 of 5", title:"One Neighborhood Around One Star", text:"Our Sun is one ordinary star among hundreds of billions in the Milky Way. Yet here you are, having a very specific Tuesday.", objects:[["sun",220],["earth",24]], thought:"Somewhere, a photon has been traveling for millions of years and will arrive without needing to answer an email." },
+  { eyebrow:"Level 4 of 5", title:"The Milky Way Is Not Center Stage", text:"Our galaxy contains hundreds of billions of stars and is itself one galaxy among an enormous cosmic population. Main-character energy: statistically unsupported, emotionally understandable.", objects:[["galaxy",520],["sun",32]], thought:"Perspective: the universe is huge. Also: your cat still expects dinner on time." },
+  { eyebrow:"Level 5 of 5", title:"The Part We Can See", text:"The observable universe is limited by the speed of light and the age of the cosmos—not necessarily by the universe itself. Reality may be stranger than our field of view.", objects:[["universe",760],["galaxy",100],["earth",10]], thought:"The unknown is not a failure of knowledge. It is the frontier where curiosity gets to breathe." }
+];
+let current = 0;
+const scene = document.getElementById("scene");
+const buttons = [...document.querySelectorAll(".step")];
+function render(){
+  const d=levels[current];
+  document.getElementById("eyebrow").textContent=d.eyebrow;
+  document.getElementById("title").textContent=d.title;
+  document.getElementById("text").textContent=d.text;
+  scene.innerHTML="";
+  d.objects.forEach(([klass,size],i)=>{ const el=document.createElement("div"); el.className="orb "+klass; el.style.setProperty("--size",size+"px"); if(i>0){el.style.transform="translate("+(i*38)+"px,"+(i*22)+"px)"} scene.appendChild(el); });
+  buttons.forEach((b,i)=>b.classList.toggle("active",i===current));
+}
+buttons.forEach((b,i)=>b.addEventListener("click",()=>{current=i;render()}));
+document.getElementById("zoomOut").addEventListener("click",()=>{current=(current+1)%levels.length;render()});
+document.getElementById("randomThought").addEventListener("click",()=>{document.getElementById("text").textContent=levels[Math.floor(Math.random()*levels.length)].thought});
+render();
+</script>
+</body>
+</html>
