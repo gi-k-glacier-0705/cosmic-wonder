@@ -1,5 +1,7 @@
 # 🌌 Cosmic Wonder
-**Humor. Humanity. Scientific Grounding.**
+### the original prototype
+
+## **Humor. Humanity. Scientific Grounding.**
 
 Welcome to the digital home of **The Laughing Philosophress**. This repository isn't just code; it's an exploration of why we fight the flow of the river instead of floating with it.
 
