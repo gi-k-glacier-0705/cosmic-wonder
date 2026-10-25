@@ -61,7 +61,7 @@
     distanceLabel.textContent = level.distance;
     scene.dataset.level = String(current);
 
-    scene.querySelectorAll(".orb:not(.person), .art").forEach((node) => node.remove());
+    scene.querySelectorAll(".orb, .art").forEach((node) => node.remove());
     level.objects.forEach(([kind, size]) => {
       const node = document.createElement("div");
       node.classList.add("orb", kind);
