@@ -2,90 +2,151 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A small cosmic perspective machine from Geek Gelasia and The Laughing Philosophress.">
-  <meta name="theme-color" content="#0b1020">
+  <meta name="theme-color" content="#090817">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'; media-src 'none'; worker-src 'none';">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()">
-  <title>You Are Here · Cosmic Perspective Machine</title>
+  <title>You Are Here — A Cosmic Perspective Machine</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <style>
-    :root { --ink:#eef2ff; --muted:#a8b3cf; --line:rgba(255,255,255,.13); --teal:#62d7c5; --gold:#ffd58a; }
-    * { box-sizing:border-box; }
-    body { margin:0; min-height:100vh; font-family:Inter,system-ui,sans-serif; color:var(--ink); background:radial-gradient(circle at 50% 15%,#26365f 0,#121a32 32%,#080b16 72%); overflow-x:hidden; }
-    body:before { content:""; position:fixed; inset:0; pointer-events:none; opacity:.65; background-image:radial-gradient(circle at 10% 18%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 72% 12%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 30% 72%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 85% 62%,#fff 0 1px,transparent 1.5px); background-size:280px 280px,370px 370px,410px 410px,510px 510px; animation:drift 90s linear infinite; }
-    @keyframes drift { to { background-position:280px 180px,-370px 220px,300px -410px,-500px -240px; } }
-    main { width:min(920px,92vw); margin:auto; padding:32px 0 80px; position:relative; }
-    nav { display:flex; justify-content:space-between; align-items:center; margin-bottom:64px; font-size:.82rem; letter-spacing:.12em; text-transform:uppercase; }
-    a { color:var(--muted); text-decoration:none; } a:hover { color:var(--teal); }
-    .brand { color:var(--teal); font-weight:600; }
-    h1,h2 { font-family:Lora,serif; font-weight:400; }
-    h1 { font-size:clamp(3rem,10vw,7rem); line-height:.95; margin:0; letter-spacing:-.045em; }
-    .lede { max-width:650px; font-size:clamp(1rem,2vw,1.22rem); line-height:1.75; color:var(--muted); margin:24px 0 48px; }
-    .machine { border:1px solid var(--line); border-radius:24px; padding:clamp(20px,5vw,48px); background:rgba(8,11,22,.52); backdrop-filter:blur(10px); box-shadow:0 24px 80px rgba(0,0,0,.28); }
-    .scale { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin:28px 0 36px; }
-    .step { border:1px solid var(--line); background:transparent; color:var(--muted); border-radius:999px; padding:10px 8px; font-size:.7rem; cursor:pointer; transition:.25s; }
-    .step:hover,.step.active { border-color:var(--teal); color:#07121b; background:var(--teal); }
-    .scene { min-height:360px; display:grid; place-items:center; position:relative; overflow:hidden; border-radius:18px; background:radial-gradient(circle at center,rgba(98,215,197,.11),transparent 28%),#090d19; border:1px solid var(--line); }
-    .orb { width:var(--size); height:var(--size); border-radius:50%; position:absolute; box-shadow:0 0 45px rgba(255,213,138,.18); transition:all .8s cubic-bezier(.2,.8,.2,1); }
-    .earth { --size:110px; background:radial-gradient(circle at 35% 30%,#a7e5ff,#3076a7 43%,#16354e 72%); }
-    .sun { --size:220px; background:radial-gradient(circle,#fff6c6 0,#ffd36b 40%,#ff8b42 72%,transparent 73%); filter:blur(.1px); opacity:.9; }
-    .galaxy { --size:520px; border:2px solid rgba(174,127,255,.4); background:radial-gradient(ellipse,rgba(255,255,255,.35),rgba(145,88,255,.15) 35%,transparent 68%); transform:rotate(-18deg); }
-    .universe { --size:760px; border:1px dashed rgba(98,215,197,.35); background:radial-gradient(circle,rgba(98,215,197,.1),transparent 65%); }
-    .caption { margin:28px auto 0; max-width:690px; text-align:center; }
-    .eyebrow { color:var(--gold); letter-spacing:.16em; text-transform:uppercase; font-size:.72rem; }
-    #title { font-size:clamp(1.8rem,4vw,3rem); margin:10px 0 12px; }
-    #text { color:var(--muted); line-height:1.75; min-height:80px; }
-    .controls { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:26px; }
-    button.action { border:1px solid var(--line); border-radius:999px; padding:12px 18px; color:var(--ink); background:rgba(255,255,255,.05); cursor:pointer; font:inherit; transition:.2s; }
-    button.action:hover { transform:translateY(-1px); border-color:var(--gold); }
-    .tiny { margin-top:52px; color:#78839f; text-align:center; font-size:.84rem; line-height:1.7; }
-    @media (max-width:650px){ nav{margin-bottom:42px}.scale{grid-template-columns:1fr 1fr}.step:last-child{grid-column:1/-1}.scene{min-height:310px}.galaxy{--size:430px}.universe{--size:620px} }
-    @media (prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;transition-duration:.001ms!important} }
+    :root{color-scheme:dark;--paper:#f2edff;--muted:#aaa6c4;--faint:#716b91;--line:rgba(220,213,255,.16);--cyan:#86f3e0;--lilac:#c5a4ff;--amber:#ffc77d;--night:#090817}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;background:var(--night);color:var(--paper);font-family:"DM Sans",system-ui,sans-serif;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 78% 8%,rgba(94,54,151,.3),transparent 35%),radial-gradient(ellipse at 8% 48%,rgba(22,98,128,.17),transparent 36%),radial-gradient(ellipse at 50% 100%,rgba(92,43,116,.16),transparent 45%)}
+    body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.32;background-image:radial-gradient(1px 1px at 8% 18%,#fff 99%,transparent),radial-gradient(1px 1px at 72% 23%,#d7d0ff 99%,transparent),radial-gradient(1px 1px at 44% 78%,#fff 99%,transparent),radial-gradient(1px 1px at 90% 70%,#fff 99%,transparent),radial-gradient(1px 1px at 21% 63%,#c5a4ff 99%,transparent),radial-gradient(1px 1px at 63% 89%,#fff 99%,transparent);background-size:310px 260px,420px 370px,360px 410px,520px 430px,470px 350px,390px 500px}
+    a{color:inherit;text-decoration:none}
+    a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+    main{width:min(1120px,calc(100% - 48px));margin:auto;padding:26px 0 56px}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:4px 0 54px;font:11px "DM Mono",monospace;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+    .brand{display:inline-flex;align-items:center;gap:10px;color:var(--paper);letter-spacing:.04em}
+    .brand-mark{display:inline-grid;place-items:center;width:27px;height:27px;border:1px solid rgba(134,243,224,.5);border-radius:50%;color:var(--cyan);font-size:15px}
+    .nav-note{color:var(--faint);text-align:right}
+    .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(190px,.52fr);align-items:end;gap:36px;padding-bottom:34px}
+    .eyebrow{display:flex;align-items:center;gap:10px;color:var(--cyan);font:10px "DM Mono",monospace;letter-spacing:.19em;text-transform:uppercase}
+    .eyebrow:before{content:"";width:25px;height:1px;background:currentColor;opacity:.8}
+    h1,h2,p{margin-top:0}
+    h1{font:400 clamp(4.2rem,10vw,9.3rem)/.78 "Instrument Serif",Georgia,serif;letter-spacing:-.055em;margin:28px 0 24px}
+    h1 em{color:var(--lilac);font-weight:400}
+    .lede{max-width:630px;color:#bcb8d1;font-size:clamp(14px,1.5vw,17px);line-height:1.8;margin:0}
+    .hero-aside{padding:0 0 6px 20px;border-left:1px solid var(--line);color:var(--muted);font:11px/1.8 "DM Mono",monospace}
+    .hero-aside strong{display:block;color:var(--amber);font-weight:400;font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:9px}
+    .machine{position:relative;border:1px solid rgba(205,190,255,.22);border-radius:4px;background:linear-gradient(135deg,rgba(23,19,47,.92),rgba(9,10,27,.86) 60%,rgba(13,25,40,.9));box-shadow:0 32px 100px rgba(0,0,0,.28);overflow:hidden}
+    .machine-head{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 22px;border-bottom:1px solid var(--line);font:10px "DM Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .live-mark{display:inline-flex;align-items:center;gap:8px;color:var(--cyan)}
+    .live-mark:before{content:"";width:5px;height:5px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+    .scale{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));padding:18px 20px 0;gap:7px}
+    .step{position:relative;min-height:44px;padding:10px 8px;border:1px solid transparent;border-radius:2px;background:transparent;color:#827d9e;font:10px "DM Mono",monospace;letter-spacing:.025em;cursor:pointer;transition:background .25s,border-color .25s,color .25s}
+    .step:before{content:attr(data-index);display:block;color:#615b7d;font-size:9px;margin-bottom:5px}
+    .step:hover{color:var(--paper);border-color:var(--line)}
+    .step.active{border-color:rgba(134,243,224,.45);background:rgba(134,243,224,.08);color:var(--cyan)}
+    .step.active:before{color:var(--cyan)}
+    .scene-wrap{padding:18px 20px 0}
+    .scene{height:clamp(300px,45vw,470px);position:relative;overflow:hidden;border:1px solid rgba(197,164,255,.15);background:radial-gradient(ellipse at 50% 48%,rgba(70,54,126,.2),transparent 48%),#080817;isolation:isolate}
+    .scene:before{content:"";position:absolute;inset:0;z-index:-1;opacity:.4;background-image:radial-gradient(1px 1px at 12% 20%,white 99%,transparent),radial-gradient(1px 1px at 81% 13%,white 99%,transparent),radial-gradient(1px 1px at 73% 75%,white 99%,transparent),radial-gradient(1px 1px at 28% 84%,white 99%,transparent),radial-gradient(1px 1px at 48% 31%,white 99%,transparent);background-size:190px 180px,240px 220px,300px 270px,260px 240px,330px 310px}
+    .scene:after{content:"";position:absolute;inset:12px;pointer-events:none;border:1px solid rgba(197,164,255,.08)}
+    .scene-corner{position:absolute;z-index:5;font:9px "DM Mono",monospace;letter-spacing:.12em;color:#777291;text-transform:uppercase}
+    .scene-corner.top-left{top:23px;left:24px}.scene-corner.top-right{top:23px;right:24px;text-align:right}.scene-corner.bottom-left{bottom:22px;left:24px}.scene-corner.bottom-right{bottom:22px;right:24px;text-align:right}
+    .scene-corner span{display:block;color:#c0b6e8;margin-top:5px}
+    .art{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);transition:all .8s cubic-bezier(.2,.8,.2,1)}
+    .orb{border-radius:50%;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);transition:all .8s cubic-bezier(.2,.8,.2,1)}
+    .earth{width:var(--size,112px);aspect-ratio:1;background:radial-gradient(ellipse at 30% 25%,rgba(255,255,255,.8),transparent 5%),radial-gradient(ellipse at 35% 28%,#76e4c2 0 8%,transparent 9%),radial-gradient(ellipse at 62% 56%,#77cda4 0 11%,transparent 12%),radial-gradient(ellipse at 38% 70%,#d1c77d 0 7%,transparent 8%),radial-gradient(circle at 32% 28%,#a4eaff 0,#3788c3 35%,#1d397a 68%,#090b25 78%);box-shadow:inset -17px -8px 28px #05091d,0 0 35px rgba(66,153,255,.25),0 0 95px rgba(76,112,255,.12)}
+    .earth:after{content:"";position:absolute;inset:-8%;border:1px solid rgba(126,213,255,.25);border-radius:50%;transform:rotate(-25deg) scaleY(.28)}
+    .sun{width:var(--size,150px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 38% 35%,#fff9dc 0,#ffe3a0 17%,#ffb15e 43%,#f36a77 66%,rgba(219,77,132,.12) 73%,transparent 76%);box-shadow:0 0 25px rgba(255,192,111,.5),0 0 70px rgba(255,121,121,.25),0 0 130px rgba(255,113,143,.13)}
+    .galaxy{width:var(--size,380px);aspect-ratio:1.6;border-radius:50%;transform:translate(-50%,-50%) rotate(-24deg);background:radial-gradient(ellipse at 50% 50%,#fff9e4 0 .7%,#e7c8ff 1.4%,rgba(180,129,255,.65) 3%,rgba(108,77,180,.48) 12%,rgba(70,67,144,.18) 29%,transparent 67%);filter:drop-shadow(0 0 20px rgba(178,130,255,.3))}
+    .galaxy:before,.galaxy:after{content:"";position:absolute;inset:7% -8%;border-radius:50%;border:1px solid rgba(197,164,255,.22);transform:rotate(22deg);box-shadow:0 0 20px rgba(173,129,255,.1)}
+    .galaxy:after{inset:19% -3%;border-color:rgba(134,243,224,.14);transform:rotate(-8deg)}
+    .universe{width:var(--size,470px);aspect-ratio:1;border-radius:50%;border:1px solid rgba(134,243,224,.25);background:repeating-radial-gradient(circle,transparent 0 29px,rgba(134,243,224,.055) 30px 31px),radial-gradient(circle,rgba(197,164,255,.15),transparent 65%)}
+    .universe:before{content:"";position:absolute;inset:9%;border-radius:50%;border:1px dashed rgba(197,164,255,.35);box-shadow:0 0 55px rgba(115,78,190,.15),inset 0 0 50px rgba(134,243,224,.07)}
+    .person{width:90px;height:130px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px}
+    .person:before{content:"";width:35px;height:35px;border-radius:50%;background:radial-gradient(circle at 35% 25%,#fff1d2,#d7a4a9 48%,#7d669f 100%);box-shadow:0 0 30px rgba(197,164,255,.28)}
+    .person:after{content:"";width:65px;height:58px;border-radius:45% 45% 20% 20%;background:linear-gradient(120deg,#bca7f8,#6b67a9 55%,#273c68);box-shadow:0 0 35px rgba(134,243,224,.1)}
+    .orbit{position:absolute;left:50%;top:50%;border:1px solid rgba(197,164,255,.25);border-radius:50%;transform:translate(-50%,-50%) rotate(-22deg);pointer-events:none}
+    .orbit:after{content:"";position:absolute;width:5px;height:5px;left:14%;top:15%;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+    .orbit.one{width:210px;height:88px}.orbit.two{width:300px;height:125px;border-color:rgba(255,199,125,.2)}.orbit.three{width:390px;height:164px;border-color:rgba(197,164,255,.15)}
+    .scene[data-level="0"] .orbit{width:190px;height:190px;border-style:dashed;transform:translate(-50%,-50%) rotate(15deg)}
+    .scene[data-level="0"] .orbit.two{width:250px;height:250px}
+    .scene[data-level="0"] .orbit.three{width:315px;height:315px}
+    .scene[data-level="1"] .earth{--size:170px}
+    .scene[data-level="2"] .sun{--size:120px}
+    .scene[data-level="2"] .earth{--size:18px;left:calc(50% + 120px);top:calc(50% - 15px)}
+    .scene[data-level="2"] .orbit.one{width:220px;height:110px}
+    .scene[data-level="2"] .orbit.two{width:320px;height:160px}
+    .scene[data-level="2"] .orbit.three{width:420px;height:210px}
+    .scene[data-level="3"] .galaxy{--size:440px}
+    .scene[data-level="3"] .sun{--size:12px;left:58%;top:46%;background:#fff9d7;box-shadow:0 0 12px #fff2c0,0 0 25px #f2b8ff}
+    .scene[data-level="4"] .universe{--size:min(470px,85vw)}
+    .scene[data-level="4"] .galaxy{--size:88px;left:56%;top:46%;opacity:.9}
+    .scene[data-level="4"] .earth{--size:4px;left:56%;top:46%;background:#fff;box-shadow:0 0 8px #fff}
+    .scene[data-level="4"] .orbit.one{width:180px;height:180px}
+    .scene[data-level="4"] .orbit.two{width:270px;height:270px}
+    .scene[data-level="4"] .orbit.three{width:365px;height:365px}
+    .caption-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(190px,.58fr);gap:30px;align-items:center;padding:28px 30px 30px}
+    .caption .eyebrow{color:var(--amber)}
+    #title{font:400 clamp(2rem,4vw,3.5rem)/1.02 "Instrument Serif",Georgia,serif;letter-spacing:-.025em;margin:12px 0}
+    #text{max-width:620px;color:#bcb8d1;font-size:14px;line-height:1.85;margin:0;min-height:52px}
+    .controls{display:flex;flex-direction:column;gap:10px}
+    button.action{display:flex;align-items:center;justify-content:space-between;gap:20px;width:100%;border:1px solid rgba(197,164,255,.28);border-radius:2px;padding:13px 15px;background:rgba(197,164,255,.055);color:var(--paper);font:11px "DM Mono",monospace;text-align:left;cursor:pointer;transition:border-color .2s,background .2s}
+    button.action span{color:var(--cyan);font-size:15px}
+    button.action:hover{border-color:var(--cyan);background:rgba(134,243,224,.08)}
+    .footnote{display:flex;justify-content:space-between;gap:20px;padding:22px 0 0;color:#7d789a;font:10px/1.7 "DM Mono",monospace;letter-spacing:.04em}
+    .footnote strong{color:#c7bfdc;font-weight:400}
+    @media(max-width:720px){main{width:min(100% - 28px,600px);padding-top:18px}nav{padding-bottom:44px;font-size:9px}.nav-note{max-width:140px;line-height:1.6}.hero{grid-template-columns:1fr;gap:20px;padding-bottom:26px}h1{font-size:clamp(4.4rem,18vw,7rem);margin:24px 0}.hero-aside{max-width:390px}.scale{grid-template-columns:repeat(5,minmax(0,1fr));padding:12px 10px 0;gap:3px}.step{font-size:8px;padding:8px 3px;overflow-wrap:anywhere}.step:before{font-size:8px}.scene-wrap{padding:12px 10px 0}.scene{height:340px}.scene-corner.top-left{top:18px;left:16px}.scene-corner.top-right{top:18px;right:16px}.scene-corner.bottom-left{bottom:17px;left:16px}.scene-corner.bottom-right{bottom:17px;right:16px}.caption-grid{grid-template-columns:1fr;gap:22px;padding:25px 20px}.controls{flex-direction:row}.controls button{flex:1;min-width:0;font-size:10px;padding:12px}.footnote{flex-direction:column;gap:7px}.scene[data-level="3"] .galaxy{--size:340px}.scene[data-level="4"] .universe{--size:300px}.scene[data-level="4"] .orbit.three{width:260px;height:260px}.scene[data-level="4"] .orbit.two{width:210px;height:210px}.scene[data-level="4"] .orbit.one{width:140px;height:140px}}
+    @media(max-width:390px){.scale{grid-template-columns:repeat(3,minmax(0,1fr))}.step:last-child{grid-column:span 2}.scene{height:300px}.machine-head{padding:14px;font-size:8px}.controls{flex-direction:column}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
   </style>
 </head>
 <body>
 <main>
   <nav>
-    <a class="brand" href="index.html">← Cosmic Wonder</a>
-    <span>Geek Gelasia's Perspective Machine</span>
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">↖</span> Cosmic Wonder</a>
+    <span class="nav-note">A tiny instrument for<br>the very large questions</span>
   </nav>
-
-  <header>
-    <div class="eyebrow">A calibration device for overthinking</div>
-    <h1>You are here.</h1>
-    <p class="lede">Technically, you are also on a planet, orbiting a star, moving through a galaxy, inside a universe whose full size we still cannot measure. This is not intended to diminish your problems. It is intended to put them somewhere interesting.</p>
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Geek Gelasia · Perspective study 001</div>
+      <h1>You are<br><em>here.</em></h1>
+      <p class="lede">A small instrument for changing scale. From the astonishing machinery of being a person to the observable universe: five zoom levels, one reality, and absolutely no requirement to feel small about it.</p>
+    </div>
+    <aside class="hero-aside"><strong>Field note / 001</strong>Perspective is not denial. A problem can be real at human scale and still look different from a cosmic distance. Both can be true.</aside>
   </header>
 
-  <section class="machine" aria-live="polite">
-    <div class="scale" id="scale">
-      <button class="step active" data-level="0">You</button>
-      <button class="step" data-level="1">Earth</button>
-      <button class="step" data-level="2">Solar System</button>
-      <button class="step" data-level="3">Milky Way</button>
-      <button class="step" data-level="4">Observable Universe</button>
+  <section class="machine" aria-label="Interactive cosmic perspective machine">
+    <div class="machine-head"><span>Scale navigator / Sol 03</span><span class="live-mark">Interactive field</span></div>
+    <div class="scale" id="scale" aria-label="Choose a scale">
+      <button class="step active" data-level="0" data-index="01" aria-pressed="true">You</button>
+      <button class="step" data-level="1" data-index="02" aria-pressed="false">Earth</button>
+      <button class="step" data-level="2" data-index="03" aria-pressed="false">Solar system</button>
+      <button class="step" data-level="3" data-index="04" aria-pressed="false">Milky Way</button>
+      <button class="step" data-level="4" data-index="05" aria-pressed="false">Observable universe</button>
     </div>
-
-    <div class="scene" id="scene" aria-hidden="true"></div>
-
-    <div class="caption">
-      <div class="eyebrow" id="eyebrow">Level 1 of 5</div>
-      <h2 id="title">The Immediate Universe</h2>
-      <p id="text">Start here. Your nervous system is receiving signals, your body is doing an astonishing amount of maintenance without asking permission, and something probably needs a snack.</p>
+    <div class="scene-wrap">
+      <div class="scene" id="scene" data-level="0" aria-hidden="true">
+        <div class="scene-corner top-left">Current frame<span id="frameLabel">Human scale</span></div>
+        <div class="scene-corner top-right">Scale is relative<span>Not to scale</span></div>
+        <div class="scene-corner bottom-left">Cosmic Wonder / GG-01</div>
+        <div class="scene-corner bottom-right" id="distanceLabel">01 — Local</div>
+        <div class="orbit one"></div><div class="orbit two"></div><div class="orbit three"></div>
+        <div class="orb person"></div>
+      </div>
+    </div>
+    <div class="caption-grid">
+      <div class="caption">
+        <div class="eyebrow" id="eyebrow">Level 01 / The immediate universe</div>
+        <h2 id="title">The astonishing fact of you</h2>
+        <p id="text">Your body is a living observatory: sensing, repairing, adapting, remembering. Start here. Something probably needs a snack.</p>
+      </div>
       <div class="controls">
-        <button class="action" id="zoomOut">Zoom out ↗</button>
-        <button class="action" id="randomThought">Give me a cosmic thought</button>
+        <button class="action" id="zoomOut">Change the scale <span aria-hidden="true">↗</span></button>
+        <button class="action" id="randomThought">Offer a cosmic thought <span aria-hidden="true">✳</span></button>
       </div>
     </div>
   </section>
-
-  <p class="tiny">Built as a reminder that perspective is not denial. Your life is simultaneously tiny on a cosmic scale and immeasurably significant at human scale. Both things can be true. 🌌</p>
+  <footer class="footnote"><span><strong>REMEMBER:</strong> small is not the same as insignificant.</span><span>Made with curiosity, not clip art.</span></footer>
 </main>
-
 <script src="you-are-here.js" defer></script>
 </body>
 </html>
