@@ -32,7 +32,7 @@ This site is built with ❤️ and stardust, focusing on:
 If your community needs a compassionate, humorous perspective, or if you just want to talk about the uncertainty of quantum boundaries:
 
 * **Sponsor the Journey:** [Buy Me a Coffee](https://buymeacoffee.com/cosmic.wonder)
-* **Inquire:** [Send an Invitation](https://gi-k-glacier-0705.github.io/cosmic-wonder/)
+* **Inquire:** [Send an Invitation](info@geekgelasia.dev)
 
 > "The universe is under no obligation to make sense to you." — *Neil deGrasse Tyson*
 
